@@ -21,7 +21,7 @@ Die Umsetzung erfolgte in zwei technischen Iterationen.
 
 ## 📁 Projektstruktur
 
-.
+
 ├── iteration1_app.py # Streamlit-basierte UI aus Iteration 1
 ├── Iteration1_SQLAgent.json # n8n-Workflow (Orchestrator-Agent)
 ├── Iteration1_DBQuery.json # n8n-Workflow (Tool für SQL-Abfragen)
@@ -38,9 +38,7 @@ Die Umsetzung erfolgte in zwei technischen Iterationen.
 ├── google-credentials.json # BigQuery-Zugang (nicht öffentlich verwenden!)
 └── requirements.txt # Python-Abhängigkeiten
 
-yaml
-Copy
-Edit
+
 
 ---
 
