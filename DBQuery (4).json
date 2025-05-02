@@ -1,0 +1,261 @@
+{
+  "name": "DBQuery",
+  "nodes": [
+    {
+      "parameters": {
+        "inputSource": "jsonExample",
+        "jsonExample": "{\n  \"query\": \"a string\"\n}"
+      },
+      "id": "1379f30b-0077-410f-9fce-240517b873c5",
+      "typeVersion": 1.1,
+      "name": "Workflow Input Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        200,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "30c3394f-b862-4d3f-85fe-f5eb97f787d5",
+              "name": "response",
+              "value": "={{ $('Format Response2').item.json.textOutput }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "82206834-776c-4c23-a057-6777c40c84f4",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1900,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Get the SQL query from the previous \nconst sqlQuery = $json.output.sql\n\n\n\n// Basic validation to prevent dangerous queries\nconst disallowedPatterns = [\n  /;\\s*--/, // End of statement with comment\n  /DROP\\s+TABLE/i,\n  /DELETE\\s+FROM/i,\n  /UPDATE\\s+/i,\n  /INSERT\\s+INTO/i,\n  /ALTER\\s+TABLE/i,\n];\n\nfor (const pattern of disallowedPatterns) {\n  if (pattern.test(sqlQuery)) {\n    throw new Error(\"Generated SQL query contains disallowed operations.\");\n  }\n}\n\n// If safe, pass the SQL query along\nreturn { sqlQuery };\n"
+      },
+      "id": "ada3146e-018f-4871-b610-010a8f532777",
+      "name": "Query Validation",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Natural Language Query:\n{{ $json.query }}\n\nAgain : \nReturn only the SQL query as plain text. Do not wrap it in backticks, triple quotes, or markdown. Do not include ```sql. Do not explain anything. No formatting. Just the raw SQL string.\n\n",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=# Context\nYou are a SQL expert. Generate a SQL query for the COVID-19 Italy dataset.\nYou are working with two BigQuery public tables:  \n- `bigquery-public-data.covid19_italy.data_by_region`  \n- `bigquery-public-data.covid19_italy.data_by_province`\n\nThese datasets contain daily COVID-19 statistics for all Italian regions and provinces.  \nEach row represents one calendar day per location.\n\n---\n\n## 📄 Table Overview\n\n### `data_by_region`  \nThis table contains **daily COVID-19 metrics at the regional level**. Each region (e.g., Lombardia, Lazio) is identified by `region_code`.\n\n| Column                                | Description |\n|---------------------------------------|-------------|\n| `date`                                | Timestamp of the report (UTC) |\n| `region_code`, `region_name`          | Regional identifiers |\n| `hospitalized_patients_symptoms`      | Patients hospitalized with symptoms (**stock value**) |\n| `hospitalized_patients_intensive_care`| ICU patients (**stock value**) |\n| `total_hospitalized_patients`         | Total hospitalized patients (symptoms + ICU) |\n| `home_confinement_cases`              | People in home isolation |\n| `total_current_confirmed_cases`       | Active confirmed cases |\n| `new_current_confirmed_cases`         | Net change in active cases (**delta value**) |\n| `new_total_confirmed_cases`           | New confirmed cases per day (**delta value**) |\n| `recovered`, `deaths`, `total_confirmed_cases` | Cumulative totals |\n| `tests_performed`                     | Cumulative number of tests performed |\n| `note`                                | Free-text note (ignore) |\n\n---\n\n### `data_by_province`  \nThis table contains **confirmed case counts at the province level**.\n\n| Column               | Description |\n|----------------------|-------------|\n| `date`               | Timestamp of the report |\n| `province_code`, `province_name` | Province identifiers |\n| `region_code`        | Region identifier (use to JOIN) |\n| `confirmed_cases`    | Cumulative total per province |\n| `note`               | Free-text note (ignore) |\n\n---\n\n## 🔁 Table Relationship (JOIN)\n- `data_by_province.region_code` joins to `data_by_region.region_code`\n- Use `JOIN` only when combining regional and provincial data\n\n---\n\n## 📊 Column Types & Aggregation Rules\n\n### 📘 Stock Values (daily snapshot – DO NOT SUM)\nUse `MAX(...)`, `AVG(...)`, or select value on a specific day.\n\n**Columns:**\n- `hospitalized_patients_symptoms`\n- `hospitalized_patients_intensive_care`\n- `total_hospitalized_patients`\n- `home_confinement_cases`\n- `total_current_confirmed_cases`\n\n---\n\n### ➕ Delta Values (per-day, aggregatable)\nCan be safely aggregated with `SUM(...)` or averaged.\n\n**Columns:**\n- `new_total_confirmed_cases`\n- `new_current_confirmed_cases`\n\n---\n\n### 📈 Cumulative Values (running totals – DO NOT SUM)  \nThese are **total counts up to the date**. Use `MAX(...)`, or compute the difference between days.\n\n**Columns:**\n- `recovered`, `deaths`, `total_confirmed_cases`, `tests_performed` (region)  \n- `confirmed_cases` (province)\n\n✅ Common aggregation approaches for cumulative values:\n\n### 1. MAX – MIN over two days:\nSELECT MAX(tests_performed) - MIN(tests_performed) AS tests_on_day\nFROM bigquery-public-data.covid19_italy.data_by_region\nWHERE DATE(date) IN ('2022-03-21', '2022-03-22')\n  AND region_name = 'Lombardia'\n\n### 2. Self-JOIN with previous day:\nSELECT curr.date,\n       curr.tests_performed - prev.tests_performed AS tests_on_day\nFROM bigquery-public-data.covid19_italy.data_by_region AS curr\nJOIN bigquery-public-data.covid19_italy.data_by_region AS prev\n  ON DATE(curr.date) = DATE_ADD(DATE(prev.date), INTERVAL 1 DAY)\nWHERE curr.region_name = 'Lombardia'\n\n### 3. Use LAG(...) window function:\nSELECT date,\n       tests_performed - LAG(tests_performed) OVER (PARTITION BY region_name ORDER BY date) AS tests_on_day\nFROM bigquery-public-data.covid19_italy.data_by_region\nQUALIFY DATE(date) = '2022-03-22'\n\n---\n\n## 📅 Date Filtering (TIMESTAMP handling)\n\nThe `date` field is a TIMESTAMP (with time, e.g. 2022-03-01 17:00:00 UTC).\n\n🛑 Always use:\n\nWHERE DATE(date) = 'YYYY-MM-DD'\n\nNever filter directly on `date = '...'` – it may fail due to timezones.\n\n---\n\n✅ Summary\n\n- Use `SUM(...)` only for delta values  \n- Use `MAX(...)`, `LAG(...)`, or differences for cumulative totals  \n- Do NOT aggregate stock or cumulative fields with `SUM(...)`  \n- Use JOIN only when combining region and province data  \n- Use correct date filtering with DATE(date)  \n- !Only return the rawSQL query, no other formatting or markdown or comments – just the raw SQL query\n"
+            }
+          ]
+        }
+      },
+      "id": "8a996a6d-3b6f-479e-be62-398ef12cf974",
+      "name": "SQL-query-Generator",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        440,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "projectId": {
+          "__rl": true,
+          "value": "n8nbachelorarbeit",
+          "mode": "list",
+          "cachedResultName": "n8nbachelorarbeit",
+          "cachedResultUrl": "https://console.cloud.google.com/bigquery?project=n8nbachelorarbeit"
+        },
+        "sqlQuery": "={{ $json.sqlQuery }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleBigQuery",
+      "typeVersion": 2.1,
+      "position": [
+        1260,
+        80
+      ],
+      "id": "0197630d-b233-48f5-8959-6c6c35dd26c3",
+      "name": "Google BigQuery",
+      "credentials": {
+        "googleBigQueryOAuth2Api": {
+          "id": "L3klz0mqRz8ZF9QC",
+          "name": "Google BigQuery account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Access the items from the previous node (MySQL node)\nconst queryResults = items.map(item => item.json);\n\n// Check if there are any results\nif (queryResults.length === 0) {\n  return [{ json: { textOutput: \"No results found for your query.\" } }];\n}\n\n// Extract column names (headers)\nconst headers = Object.keys(queryResults[0]);\n\n// Initialize an array to hold formatted lines\nlet lines = [];\n\n// Create a header row (optional)\nlines.push(headers.join(' | '));\nlines.push(headers.map(() => '---').join(' | ')); // For Markdown table formatting\n\n// Iterate over each result item\nqueryResults.forEach(item => {\n  const row = headers.map(header => item[header]);\n  lines.push(row.join(' | '));\n});\n\n// Join all lines into a single string with line breaks\nconst textOutput = lines.join('\\n');\n\n// Return the formatted text as a new field\nreturn [{ json: { textOutput } }];\n"
+      },
+      "id": "e45b2968-23ad-4081-a8b6-e61c82f046ef",
+      "name": "Format Response2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1480,
+        80
+      ]
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"sql\": \"SELECT *FROM..\"\n\t\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        680,
+        300
+      ],
+      "id": "3ef4870d-8082-4b69-aa58-d50fbc5e8c1d",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        440,
+        300
+      ],
+      "id": "c78319dd-56db-40a1-b333-b9dc225a3a64",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "kULsOa2P5nHWfDra",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Workflow Input Trigger": [
+      {
+        "json": {
+          "query": "Select date, sum(deaths) as total_deaths from `bigquery-public-data.covid19_italy.national_trends` where country = 'ITA' and date >= '2021-01-01' and date < '2022-01-01' group by EXTRACT(QUARTER FROM date) order by date"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Workflow Input Trigger": {
+      "main": [
+        [
+          {
+            "node": "SQL-query-Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Query Validation": {
+      "main": [
+        [
+          {
+            "node": "Google BigQuery",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SQL-query-Generator": {
+      "main": [
+        [
+          {
+            "node": "Query Validation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google BigQuery": {
+      "main": [
+        [
+          {
+            "node": "Format Response2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Response2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "SQL-query-Generator",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "SQL-query-Generator",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ccb7e261-2bab-43cc-ad81-952d733b913f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3c55565d87975af72cfa7a7be0ae986cc381d0463c1f1e8686023835ab821f15"
+  },
+  "id": "dTARxhOPBm0DS5TQ",
+  "tags": [
+    {
+      "createdAt": "2025-03-27T10:45:43.331Z",
+      "updatedAt": "2025-03-27T10:45:43.331Z",
+      "id": "LV8QEAhzsm2kXdkq",
+      "name": "Agent"
+    }
+  ]
+}

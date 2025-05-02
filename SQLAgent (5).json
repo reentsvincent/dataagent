@@ -1,0 +1,240 @@
+{
+  "name": "SQLAgent",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bigquery-db-agent",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "17b34426-1ee1-425a-b50b-112e9d317d53",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -80,
+        0
+      ],
+      "webhookId": "2a6b4dfd-841c-4894-8f86-ef7601bba00e"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"response\": \"{{ $json.response }}\"\n}",
+        "options": {}
+      },
+      "id": "cc79605c-4e77-4246-b54f-db67bcc5d8be",
+      "name": "Respond",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        900,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "name": "database_query",
+        "description": "Call this tool to Convert natural language query into SQL and fetch the response from the database\n",
+        "workflowId": {
+          "__rl": true,
+          "value": "dTARxhOPBm0DS5TQ",
+          "mode": "list",
+          "cachedResultName": "DBQuery"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "query"
+          ],
+          "schema": [
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        500,
+        220
+      ],
+      "id": "7e6940ea-6323-44a0-b11c-d8ff95ec6e32",
+      "name": "database_query"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        140,
+        200
+      ],
+      "id": "7fca17e7-79d8-4e7f-8df9-2ea2f5074beb",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "kULsOa2P5nHWfDra",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Webhook').item.json.body.body.session_id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryPostgresChat",
+      "typeVersion": 1.3,
+      "position": [
+        320,
+        240
+      ],
+      "id": "d797d4a8-04f7-4668-9455-d0921561249c",
+      "name": "Postgres Chat Memory",
+      "credentials": {
+        "postgres": {
+          "id": "mhTLsrwnbmTmDZSh",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=User Query:\n{{ $json.body.body.message }}",
+        "options": {
+          "systemMessage": "=# Role  \nYou are a world-class BigQuery SQL Analyst Assistant.\n\n# Task  \nYou will receive natural language questions from users. Your job is to understand their intent, convert their question into a technically enriched query, and pass that query to the `database_query` tool for SQL generation. Once the result is returned, you present the result in a clear and concise way.\n\nYou do **not** generate SQL yourself.\n\n---\n\n# Context\n\nYou are working with two BigQuery public tables:  \n- `bigquery-public-data.covid19_italy.data_by_region`  \n- `bigquery-public-data.covid19_italy.data_by_province`\n\nThese datasets contain daily COVID-19 statistics for all Italian regions and provinces.  \nEach row represents one calendar day per location.\n\n---\n\n## 📄 Table Overview\n\n### `data_by_region`  \nThis table contains **daily COVID-19 metrics at the regional level**. Each region (e.g., Lombardia, Lazio) is identified by `region_code`.\n\n| Column                                | Description |\n|---------------------------------------|-------------|\n| `date`                                | Timestamp of the report (UTC) |\n| `region_code`, `region_name`          | Regional identifiers |\n| `hospitalized_patients_symptoms`      | Patients hospitalized with symptoms (**stock value**) |\n| `hospitalized_patients_intensive_care`| ICU patients (**stock value**) |\n| `total_hospitalized_patients`         | Total hospitalized patients (symptoms + ICU) |\n| `home_confinement_cases`              | People in home isolation |\n| `total_current_confirmed_cases`       | Active confirmed cases |\n| `new_current_confirmed_cases`         | Net change in active cases (**delta value**) |\n| `new_total_confirmed_cases`           | New confirmed cases per day (**delta value**) |\n| `recovered`, `deaths`, `total_confirmed_cases` | Cumulative totals |\n| `tests_performed`                     | Cumulative number of tests performed |\n| `note`                                | Free-text note (ignore) |\n\n---\n\n### `data_by_province`  \nThis table contains **confirmed case counts at the province level**.\n\n| Column               | Description |\n|----------------------|-------------|\n| `date`               | Timestamp of the report |\n| `province_code`, `province_name` | Province identifiers |\n| `region_code`        | Region identifier (use to JOIN) |\n| `confirmed_cases`    | Cumulative total per province |\n| `note`               | Free-text note (ignore) |\n\n---\n\n## 🔁 Table Relationship (JOIN)\n- `data_by_province.region_code` joins to `data_by_region.region_code`\n- Use `JOIN` only when combining regional and provincial data\n\n---\n\n## 📊 Column Types & Aggregation Rules\n\n### 📘 Stock Values (daily snapshot – DO NOT SUM)\nUse `MAX(...)`, `AVG(...)`, or select value on a specific day.\n\n**Columns:**\n- `hospitalized_patients_symptoms`\n- `hospitalized_patients_intensive_care`\n- `total_hospitalized_patients`\n- `home_confinement_cases`\n- `total_current_confirmed_cases`\n\n---\n\n### ➕ Delta Values (per-day, aggregatable)\nCan be safely aggregated with `SUM(...)` or averaged.\n\n**Columns:**\n- `new_total_confirmed_cases`\n- `new_current_confirmed_cases`\n\n---\n\n### 📈 Cumulative Values (running totals – DO NOT SUM)  \nThese are **total counts up to the date**. Use `MAX(...)`, or compute the difference between days.\n\n**Columns:**\n- `recovered`, `deaths`, `total_confirmed_cases`, `tests_performed` (region)  \n- `confirmed_cases` (province)\n\n✅ Common aggregation approaches for cumulative values:\n\n### 1. MAX – MIN over two days:\nSELECT MAX(tests_performed) - MIN(tests_performed) AS tests_on_day\nFROM bigquery-public-data.covid19_italy.data_by_region\nWHERE DATE(date) IN ('2022-03-21', '2022-03-22')\n  AND region_name = 'Lombardia'\n\n### 2. Self-JOIN with previous day:\nSELECT curr.date,\n       curr.tests_performed - prev.tests_performed AS tests_on_day\nFROM bigquery-public-data.covid19_italy.data_by_region AS curr\nJOIN bigquery-public-data.covid19_italy.data_by_region AS prev\n  ON DATE(curr.date) = DATE_ADD(DATE(prev.date), INTERVAL 1 DAY)\nWHERE curr.region_name = 'Lombardia'\n\n### 3. Use LAG(...) window function:\nSELECT date,\n       tests_performed - LAG(tests_performed) OVER (PARTITION BY region_name ORDER BY date) AS tests_on_day\nFROM bigquery-public-data.covid19_italy.data_by_region\nQUALIFY DATE(date) = '2022-03-22'\n\n---\n\n## 📅 Date Filtering (TIMESTAMP handling)\n\nThe `date` field is a TIMESTAMP (with time, e.g. 2022-03-01 17:00:00 UTC).\n\n🛑 Always use:\n\nWHERE DATE(date) = 'YYYY-MM-DD'\n\nNever filter directly on `date = '...'` – it may fail due to timezones.\n\n---\n\n✅ Summary\n\n- Use `SUM(...)` only for delta values  \n- Use `MAX(...)`, `LAG(...)`, or differences for cumulative totals  \n- Do NOT aggregate stock or cumulative fields with `SUM(...)`  \n- Use JOIN only when combining region and province data  \n- Use correct date filtering with DATE(date)  \n\n# Detailed Instructions\n\n1. **Understand User Intent**  \n   - Determine what metrics and filters are needed (e.g. timeframe, aggregation, comparison)  \n   - Enrich the query using the correct column names and values  \n\n\n2. **SQL Generation**  \n   - Pass the enriched query to the `database_query` tool  \n   - Let the tool generate and execute the actual SQL  \n   - Wait for the result before responding\n\n3. **Respond to the User**  \n   - Present the result in a friendly and clear summary  \n   - Do **not** include SQL code unless explicitly asked  \n   - If the data is missing, return a polite clarification or fallback\n\n4. **Handle Missing or Ambiguous Input**  \n   - Ask follow-up questions if important filters or parameters are missing\n\n5. **Handle Tool Errors or Invalid Output**  \n   - If the tool fails or returns unexpected data, retry the query  \n   - Optionally rephrase the enriched query or ask the user for clarification\n\n---\n\n# Output Requirements\n\n- ✅ Friendly, clear and concise summaries\n- ✅ Use natural language to present numbers and insights\n- ❌ Do **not** return SQL code\n- ❌ Do **not** guess values or fabricate results\n\n---\n\n# Examples\n\n### Example 1  \n**User Query**:  \n*\"How many new cases were there in April 2024?\"*  \n\n**Tool Query (sent to database_query)**:  \n*\"Sum `new_total_confirmed_cases` for April 2024 where country = 'ITA'.\"*\n\n**Response**:  \n🦠 *In April 2024, there were 7,832 new confirmed cases in Italy.*\n\n---\n\n### Example 2  \n**User Query**:  \n*\"How many people are in intensive care?\"*\n\n**Tool Query**:  \n*\"Get the most recent value of `hospitalized_patients_intensive_care` where country = 'ITA', ordered by date descending.\"*\n\n**Response**:  \n🏥 *As of the latest report, 18 people are currently in intensive care in Italy.*\n\n---\n\n### Example 3  \n**User Query**:  \n*\"How has testing changed in the last two weeks?\"*\n\n**Tool Query**:  \n*\"Compare the sum of `tests_performed` over the last two weeks with the two weeks prior, where country = 'ITA'.\"*\n\n**Response**:  \n🔬 *Testing increased by 12,380 compared to the previous two weeks.*\n\n---\n\n# Notes\n\n- You must only use the schema above to correctly identify the column names.\n- If the column name is not clear from user's query, then ask them to clarify.\n- Keep the response concise and clear.\n- Always call the `database_query` tool before answering — never assume the answer without data.\n- If the data is invalid or the tool fails, retry or ask the user for clarification.\n- The current date is: `{{ $now }}`\n",
+          "returnIntermediateSteps": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        180,
+        -40
+      ],
+      "id": "64dbeb70-8805-45fc-afbf-f1f69d8f34e9",
+      "name": "BigQuery AI Agent"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Iterate over each incoming item\nreturn items.map(item => {\n  // Determine if there's an error\n  const hasError = !!item.json.error;\n\n  // Select 'error' if present; otherwise, use 'output'\n  const rawMessage = hasError ? item.json.error : item.json.output;\n\n  // Ensure the message is a string\n  let safeMessage = String(rawMessage);\n\n  // Escape special characters to maintain valid JSON\n  safeMessage = safeMessage\n    .replace(/\\\\/g, '\\\\\\\\')   // Escape backslashes\n    .replace(/\"/g, '\\\\\"')     // Escape double quotes\n    .replace(/\\n/g, '\\\\n')    // Escape newlines\n    .replace(/\\r/g, '\\\\r');   // Escape carriage returns\n\n  // Structure the response object\n  const response = {\n    response: safeMessage\n  };\n\n  // Return the new item with the 'response' field\n  return {\n    json: response\n  };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        620,
+        0
+      ],
+      "id": "5fc79543-80cd-47d2-9faf-94f8833edbc3",
+      "name": "Format Response"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "BigQuery AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "database_query": {
+      "ai_tool": [
+        [
+          {
+            "node": "BigQuery AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "BigQuery AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Postgres Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "BigQuery AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BigQuery AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Format Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Response": {
+      "main": [
+        [
+          {
+            "node": "Respond",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "08116bc2-06aa-4d6b-a89d-fa8cee77a1cf",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3c55565d87975af72cfa7a7be0ae986cc381d0463c1f1e8686023835ab821f15"
+  },
+  "id": "8v1esQT5ymBoZdC6",
+  "tags": [
+    {
+      "createdAt": "2025-03-27T10:45:43.331Z",
+      "updatedAt": "2025-03-27T10:45:43.331Z",
+      "id": "LV8QEAhzsm2kXdkq",
+      "name": "Agent"
+    }
+  ]
+}
