@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  covid-assistant:
+    build: .
+    ports:
+      - "8000:8000"  # FastAPI
+      - "8501:8501"  # Streamlit
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ENVIRONMENT=docker
+    volumes:
+      - ./google-credentials.json:/app/google-credentials.json:ro 
