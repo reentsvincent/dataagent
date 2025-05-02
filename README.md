@@ -1,8 +1,4 @@
-Perfekt! Hier ist die **komplette `README.md` in reinem Markdown** – **kein HTML**, keine Sonderzeichen außerhalb der Markdown-Syntax, direkt kopierbar und GitHub-kompatibel:
 
----
-
-```markdown
 # AI-Agent für KI-gestützte Datenanalyse
 
 Dieses Repository enthält den vollständigen Quellcode sowie alle Evaluationsdaten zur Bachelorarbeit:
