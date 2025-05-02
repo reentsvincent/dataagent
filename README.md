@@ -118,11 +118,3 @@ Vincent Reents
 B.Sc. Information Systems
 Universität Münster
 E-Mail: [vreents@uni-muenster.de](mailto:vreents@uni-muenster.de)
-
-```
-
----
-
-Du kannst den obigen Text 1:1 als `README.md` in dein Repository einfügen.  
-Möchtest du ihn auch als `.md`-Datei?
-```
