@@ -1,0 +1,1534 @@
+Frage (natürlichsprachlich),SQL-Query,Komplexität,Enthaltene Operatoren,,Antwort,Richtige Lösung,Zeit,Richtige Antwort ?,Bei Fehler : Verwendete Query,Fehleranalyse
+Wie viele neu bestätigte COVID-19-Fälle wurden am 15. März 2021 in Lazio gemeldet?,"SELECT new_total_confirmed_cases
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'Lazio' AND DATE(date) = '2021-03-15';",Easy,LOGICAL CONNECTOR,,Am 15. März 2021 wurden in der Region Lazio 1.536 neu bestätigte COVID-19-Fälle gemeldet.,1536,"8,38",JA,,
+Wie viele Patienten befanden sich am 1. April 2021 auf der Intensivstation in Lombardia?,"SELECT hospitalized_patients_intensive_care
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'Lombardia' AND DATE(date) = '2021-04-01';",Easy,LOGICAL CONNECTOR,,Am 1. April 2021 befanden sich 860 Patienten auf der Intensivstation in Lombardia.,860,"8,97",JA,,
+Wie viele Tests wurden in Campania bis zum 10. Februar 2021 insgesamt durchgeführt?,"SELECT tests_performed
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'Campania' AND DATE(date) = '2021-02-10';",Easy,LOGICAL CONNECTOR,,"Bis zum 10. Februar 2021 wurden in der Region Campania insgesamt 2,589,633 Tests durchgeführt.",2589633,"8,91",JA,,
+Wie viele Personen befanden sich am 5. Mai 2021 in Veneto in häuslicher Isolation?,"SELECT home_confinement_cases
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'Veneto' AND DATE(date) = '2021-05-05';",Easy,LOGICAL CONNECTOR,,Am 5. Mai 2021 befanden sich 19.177 Personen in Veneto in häuslicher Isolation.,19177,"11,31",JA,,
+Wie viele bestätigte Gesamtfälle gab es bis zum 1. März 2021 in Piemonte?,"SELECT total_confirmed_cases
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'Piemonte' AND DATE(date) = '2021-03-01';",Easy,LOGICAL CONNECTOR,,"Bis zum 1. März 2021 gab es in der Region Piemonte insgesamt 248,289 bestätigte COVID-19-Fälle.",248289,"9,39",JA,,
+Wie viele neu aktive Fälle wurden am 12. April 2021 in Toscana gemeldet?,"SELECT new_current_confirmed_cases
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'Toscana' AND DATE(date) = '2021-04-12';",Easy,LOGICAL CONNECTOR,,"Am 12. April 2021 wurden in der Region Toscana 127 neu aktive COVID-19-Fälle gemeldet. Dies bedeutet, dass die Anzahl der aktiven Fälle an diesem Tag gesunken ist.",-127,"6,31",Nein,,- nicht übernommen
+Wie viele hospitalisierte COVID-19-Patienten gab es am 20. Januar 2021 in Lazio insgesamt?,"SELECT total_hospitalized_patients
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'Lazio' AND DATE(date) = '2021-01-20';",Easy,LOGICAL CONNECTOR,,Am 20. Januar 2021 gab es in Lazio insgesamt 3.023 hospitalisierte COVID-19-Patienten.,3023,"8,09",JA,,
+Wie viele Todesfälle wurden bis zum 30. März 2021 in Puglia registriert?,"SELECT deaths
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'Puglia' AND DATE(date) = '2021-03-30';",Easy,LOGICAL CONNECTOR,,"Bis zum 30. März 2021 wurden in der Region Puglia insgesamt 4,761 Todesfälle registriert.",4761,"7,65",JA,,
+Wie viele aktive Fälle waren am 14. Februar 2021 in Sicilia gemeldet?,"SELECT total_current_confirmed_cases
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'Sicilia' AND DATE(date) = '2021-02-14';",Easy,LOGICAL CONNECTOR,,"Am 14. Februar 2021 waren in der Region Sicilia insgesamt 34,866 aktive COVID-19-Fälle gemeldet.",34866,"7,45",JA,,
+Wie viele genesene COVID-19-Patienten wurden bis zum 18. März 2021 in Emilia-Romagna gemeldet?,"SELECT recovered
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'Emilia-Romagna' AND DATE(date) = '2021-03-18';",Easy,LOGICAL CONNECTOR,,"Bis zum 18. März 2021 wurden in der Region Emilia-Romagna insgesamt 227,087 genesene COVID-19-Patienten gemeldet.",227087,"9,11",JA,,
+Wie viele neu bestätigte Gesamtfälle wurden am 2. Mai 2021 in Liguria gemeldet?,"SELECT new_total_confirmed_cases
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'Liguria' AND DATE(date) = '2021-05-02';",Easy,LOGICAL CONNECTOR,,Am 2. Mai 2021 wurden in Liguria insgesamt 202 neu bestätigte COVID-19-Fälle gemeldet.,202,"9,21",JA,,
+Wie viele Patienten mit Symptomen wurden am 25. Februar 2021 in P.A Trento behandelt?,"SELECT hospitalized_patients_symptoms
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'P.A. Trento' AND DATE(date) = '2021-02-25';",Easy,LOGICAL CONNECTOR,,Es scheint ein technisches Problem bei der Abfrage von Daten für die Provinz P.A. Trento zu geben. Leider kann ich die Anzahl der Patienten mit Symptomen am 25. Februar 2021 nicht abrufen. Möchten Sie es mit einer anderen Provinz oder zu einem anderen Datum versuchen?,168,"12,34",Nein,,
+Wie viele bestätigte Gesamtfälle gab es bis zum 5. Januar 2021 in Umbria?,"SELECT total_confirmed_cases
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE region_name = 'Umbria' AND DATE(date) = '2021-01-05';",Easy,LOGICAL CONNECTOR,,"Bis zum 5. Januar 2021 gab es in der Region Umbria insgesamt 29,728 bestätigte COVID-19-Fälle.",29728,"8,22",JA,,
+Wie viele Provinzen pro Region meldeten am 1. April 2021 mindestens einen bestätigten COVID-19-Fall?,"SELECT region_name, COUNT(DISTINCT province_name) AS num_provinces
+FROM bigquery-public-data.covid19_italy.data_by_region AS region
+JOIN bigquery-public-data.covid19_italy.data_by_province AS province
+ON region.region_code = province.region_code
+WHERE DATE(region.date) = '2021-04-01' AND province.confirmed_cases > 0
+GROUP BY region_name;",Medium,"JOIN, LOGICAL CONNECTOR",,"Am 1. April 2021 meldeten verschiedene Regionen in Italien unter den Provinzen mindestens einen bestätigten COVID-19-Fall. Hier ist die Anzahl der Provinzen pro Region:
+
+Region mit 1: 10 Provinzen
+Region mit 7: 6 Provinzen
+Region mit 9: 11 Provinzen
+Region mit 18: 6 Provinzen
+Region mit 3: 14 Provinzen
+Region mit 11: 6 Provinzen
+Region mit 16: 8 Provinzen
+Region mit 20: 5 Provinzen
+Region mit 4: 2 Provinzen
+Region mit 5: 9 Provinzen
+Region mit 6: 5 Provinzen
+Region mit 8: 11 Provinzen
+Region mit 10: 3 Provinzen
+Region mit 12: 7 Provinzen
+Region mit 15: 7 Provinzen
+Region mit 13: 6 Provinzen
+Region mit 2: 3 Provinzen
+Region mit 14: 3 Provinzen
+Region mit 17: 3 Provinzen
+Region mit 19: 9 Provinzen
+Die Zahlen zeigen die Vielfalt der Provinzen, die an diesem Tag in den verschiedenen Regionen COVID-19-Fälle gemeldet haben.","Piemonte: 10 Provinzen
+Umbria: 4 Provinzen
+Marche: 7 Provinzen
+Lazio: 7 Provinzen
+Abruzzo: 6 Provinzen
+Campania: 7 Provinzen
+Puglia: 8 Provinzen
+Calabria: 7 Provinzen
+Sicilia: 10 Provinzen
+Sardegna: 7 Provinzen
+P.A. Trento: 1 Provinz
+Lombardia: 14 Provinzen
+Veneto: 9 Provinzen
+Friuli Venezia Giulia: 6 Provinzen
+Liguria: 6 Provinzen
+Emilia-Romagna: 11 Provinzen
+Toscana: 12 Provinzen
+Valle d'Aosta: 3 Provinzen
+Basilicata: 4 Provinzen
+Molise: 4 Provinzen
+P.A. Bolzano: 1 Provinz","18,84",Nein,,
+Wie hoch war die durchschnittliche Anzahl bisheriger bestätigter Fälle pro Provinz und Region am 2. März 2021?,"SELECT r.region_name, AVG(p.confirmed_cases) AS avg_cases
+FROM `bigquery-public-data.covid19_italy.data_by_province` AS p
+JOIN `bigquery-public-data.covid19_italy.data_by_region` AS r
+ON p.region_code = r.region_code
+WHERE DATE(p.date) = '2021-03-02'
+GROUP BY r.region_name;",Medium,"JOIN, LOGICAL CONNECTOR",,"Am 2. März 2021 war die durchschnittliche Anzahl bestätigter Fälle pro Provinz und Region wie folgt: Piemonte hatte durchschnittlich 24,990 Fälle, Liguria 13,104 Fälle, Toscana 13,181 Fälle, Calabria 5,448 Fälle, Lombardia 43,498 Fälle, Marche 9,817 Fälle, Puglia 18,588 Fälle, Sardegna 5,901 Fälle, Veneto 37,275 Fälle, Friuli Venezia Giulia 12,910 Fälle, Emilia-Romagna 24,110 Fälle, Umbria 11,263 Fälle, Lazio 33,780 Fälle, Campania 38,794 Fälle, Abruzzo 9,152 Fälle, Valle d'Aosta 2,688 Fälle, Molise 2,688 Fälle, Basilicata 3,964 Fälle und Sicilia 13,964 Fälle.","Piemonte hatte durchschnittlich 24,990 Fälle, Liguria 13,104 Fälle, Toscana 13,181 Fälle, Calabria 5,448 Fälle, Lombardia 43,498 Fälle, Marche 9,817 Fälle, Puglia 18,588 Fälle, Sardegna 5,901 Fälle, Veneto 37,275 Fälle, Friuli Venezia Giulia 12,910 Fälle, Emilia-Romagna 24,110 Fälle, Umbria 11,263 Fälle, Lazio 33,780 Fälle, Campania 38,794 Fälle, Abruzzo 9,152 Fälle, Valle d'Aosta 2,688 Fälle, Molise 2,688 Fälle, Basilicata 3,964 Fälle und Sicilia 13,964 Fälle","12,24",JA,,
+Wie viele Provinzmeldungen wurden am 3. März 2021 je Region erfasst?,"SELECT region_name, COUNT(DISTINCT province_name) AS num_province_reports
+FROM bigquery-public-data.covid19_italy.data_by_region AS region
+JOIN bigquery-public-data.covid19_italy.data_by_province AS province
+ON region.region_code = province.region_code
+WHERE DATE(region.date) = '2021-03-03'
+GROUP BY region_name;
+",Medium,"JOIN, LOGICAL CONNECTOR",,"Am 3. März 2021 wurden die folgenden Anzahl von Provinzmeldungen pro Region erfasst: Liguria (6), Calabria (7), Marche (7), Sardegna (7), Lombardia (14), P.A. Bolzano (2), Veneto (9), Friuli Venezia Giulia (6), Emilia-Romagna (11), Campania (7), Abruzzo (6), Valle d'Aosta (3), Basilicata (4), Sicilia (11), Piemonte (10), Toscana (12), Puglia (8), P.A. Trento (2), Umbria (4), Lazio (7), Molise (4).","m 3. März 2021 wurden in den verschiedenen Regionen Italiens folgende Anzahl an Provinzmeldungen erfasst:
+
+Region 1: 10 Meldungen
+Region 2: 3 Meldungen
+Region 3: 14 Meldungen
+Region 4: 6 Meldungen
+Region 5: 9 Meldungen
+Region 6: 6 Meldungen
+Region 7: 6 Meldungen
+Region 8: 11 Meldungen
+Region 9: 12 Meldungen
+Region 10: 4 Meldungen
+Region 11: 7 Meldungen
+Region 12: 7 Meldungen
+Region 13: 6 Meldungen
+Region 14: 4 Meldungen
+Region 15: 7 Meldungen
+Region 16: 8 Meldungen
+Region 17: 4 Meldungen
+Region 18: 7 Meldungen
+Region 19: 11 Meldungen
+Region 20: 7 Meldungen
+Diese Daten geben Ihnen einen Überblick über die Anzahl der Provinzmeldungen, die an diesem Tag in jeder Region erfasst wurden.","11,41",Nein,,
+Wie hoch war die Zahl der Provinz mit den meisten bisher bestätigten Fälle pro Region am 4. März 2021?,"SELECT r.region_name, MAX(p.confirmed_cases) AS max_cases
+FROM `bigquery-public-data.covid19_italy.data_by_province` AS p
+JOIN `bigquery-public-data.covid19_italy.data_by_region` AS r
+ON p.region_code = r.region_code
+WHERE DATE(p.date) = '2021-03-04'
+GROUP BY r.region_name;",Medium,"JOIN, LOGICAL CONNECTOR",,"Am 4. März 2021 war die Provinz mit den meisten bestätigten COVID-19-Fällen in jeder Region wie folgt:
+
+Lombardia: Milano - 209,702 Fälle
+Piemonte: Torino - 134,658 Fälle
+Lazio: Roma - 170,554 Fälle
+Campania: Napoli - 163,760 Fälle
+Emilia-Romagna: Bologna - 64,128 Fälle
+Sicilia: Palermo - 44,722 Fälle
+Toscana: Firenze - 43,821 Fälle
+Puglia: Bari - 58,289 Fälle
+Calabria: Reggio di Calabria - 15,128 Fälle
+Friuli Venezia Giulia: Udine - 36,545 Fälle
+Liguria: Genova - 42,690 Fälle
+Marche: Ancona - 22,935 Fälle
+Abruzzo: Pescara - 14,701 Fälle
+Umbria: Perugia - 35,311 Fälle
+Basilicata: Potenza - 10,507 Fälle
+Molise: Campobasso - 7,821 Fälle
+Valle d'Aosta: Aosta - 7,811 Fälle
+Trentino-Alto Adige: Bolzano - 54,694 Fälle
+Friuli Venezia Giulia: Gorizia - 9,319 Fälle
+Sud Sardegna: Cagliari - 9,901 Fälle
+Diese Informationen geben Ihnen einen Überblick über die Anzahl der bestätigten Fälle in den Provinzen pro Region an diesem Datum.","[{
+  ""region_name"": ""Piemonte"",
+  ""max_cases"": ""134658""
+}, {
+  ""region_name"": ""Umbria"",
+  ""max_cases"": ""35311""
+}, {
+  ""region_name"": ""Marche"",
+  ""max_cases"": ""22935""
+}, {
+  ""region_name"": ""Lazio"",
+  ""max_cases"": ""170554""
+}, {
+  ""region_name"": ""Abruzzo"",
+  ""max_cases"": ""14701""
+}, {
+  ""region_name"": ""Campania"",
+  ""max_cases"": ""163760""
+}, {
+  ""region_name"": ""Puglia"",
+  ""max_cases"": ""58289""
+}, {
+  ""region_name"": ""Calabria"",
+  ""max_cases"": ""15128""
+}, {
+  ""region_name"": ""Sicilia"",
+  ""max_cases"": ""44722""
+}, {
+  ""region_name"": ""Sardegna"",
+  ""max_cases"": ""13239""
+}, {
+  ""region_name"": ""Lombardia"",
+  ""max_cases"": ""209702""
+}, {
+  ""region_name"": ""Veneto"",
+  ""max_cases"": ""65866""
+}, {
+  ""region_name"": ""Friuli Venezia Giulia"",
+  ""max_cases"": ""36545""
+}, {
+  ""region_name"": ""Liguria"",
+  ""max_cases"": ""42690""
+}, {
+  ""region_name"": ""Emilia-Romagna"",
+  ""max_cases"": ""64128""
+}, {
+  ""region_name"": ""Toscana"",
+  ""max_cases"": ""43821""
+}, {
+  ""region_name"": ""Molise"",
+  ""max_cases"": ""7821""
+}, {
+  ""region_name"": ""Basilicata"",
+  ""max_cases"": ""10507""
+}, {
+  ""region_name"": ""Valle d\u0027Aosta"",
+  ""max_cases"": ""7811""
+}]","25,21",JA,,
+"„Wie hoch ist die Anzahl der Provinzen pro Region, die am 19. März 2021 mehr als 100.000 kumulierte Fälle meldeten?","SELECT region_name, COUNT(DISTINCT province_name) AS num_provinces
+FROM bigquery-public-data.covid19_italy.data_by_region AS region
+JOIN bigquery-public-data.covid19_italy.data_by_province AS province
+ON region.region_code = province.region_code
+WHERE DATE(region.date) = '2021-03-19'
+AND province.confirmed_cases > 100000
+GROUP BY region_name;",Medium,"JOIN, LOGICAL CONNECTOR",,"Am 19. März 2021 meldeten die folgenden Anzahl von Provinzen pro Region in Italien mehr als 100.000 kumulierte COVID-19-Fälle: Liguria (3), Veneto (7), Friuli Venezia Giulia (3), Emilia-Romagna (11), Marche (7), Abruzzo (4), Calabria (3), Sicilia (7), Sardegna (3), Piemonte (4), Toscana (8), Lombardia (12), Puglia (6), Umbria (4), Lazio (4), Campania (7), Basilicata (1).","[{
+  ""region_name"": ""Liguria"",
+  ""num_provinces"": ""3""
+}, {
+  ""region_name"": ""Veneto"",
+  ""num_provinces"": ""7""
+}, {
+  ""region_name"": ""Friuli Venezia Giulia"",
+  ""num_provinces"": ""3""
+}, {
+  ""region_name"": ""Emilia-Romagna"",
+  ""num_provinces"": ""11""
+}, {
+  ""region_name"": ""Marche"",
+  ""num_provinces"": ""7""
+}, {
+  ""region_name"": ""Abruzzo"",
+  ""num_provinces"": ""4""
+}, {
+  ""region_name"": ""Calabria"",
+  ""num_provinces"": ""3""
+}, {
+  ""region_name"": ""Sicilia"",
+  ""num_provinces"": ""7""
+}, {
+  ""region_name"": ""Sardegna"",
+  ""num_provinces"": ""3""
+}, {
+  ""region_name"": ""Piemonte"",
+  ""num_provinces"": ""4""
+}, {
+  ""region_name"": ""Toscana"",
+  ""num_provinces"": ""8""
+}, {
+  ""region_name"": ""Lombardia"",
+  ""num_provinces"": ""12""
+}, {
+  ""region_name"": ""Puglia"",
+  ""num_provinces"": ""6""
+}, {
+  ""region_name"": ""Umbria"",
+  ""num_provinces"": ""4""
+}, {
+  ""region_name"": ""Lazio"",
+  ""num_provinces"": ""4""
+}, {
+  ""region_name"": ""Campania"",
+  ""num_provinces"": ""7""
+}, {
+  ""region_name"": ""Basilicata"",
+  ""num_provinces"": ""1""
+}]","23,21",JA,,
+Wie hoch war die durchschnittliche Zahl bisher bestätigter COVID-19-Fälle pro Provinz in jeder Region am 15. März 2021?,"SELECT r.region_name, AVG(p.confirmed_cases) AS avg_cases
+FROM `bigquery-public-data.covid19_italy.data_by_province` AS p
+JOIN `bigquery-public-data.covid19_italy.data_by_region` AS r ON p.region_code = r.region_code
+WHERE DATE(p.date) = '2021-03-15'
+GROUP BY r.region_name;",Medium,"JOIN, LOGICAL CONNECTOR",,"Am 15. März 2021 betrug die durchschnittliche Zahl bestätigter COVID-19-Fälle pro Provinz in den italienischen Regionen wie folgt:
+
+Piemonte: 27,522
+Liguria: 13,814
+Toscana: 14,507
+Calabria: 5,914
+Lombardia: 47,802
+Marche: 11,227
+Puglia: 20,784
+Sardegna: 6,079
+Veneto: 39,462
+Friuli Venezia Giulia: 14,424
+Emilia-Romagna: 27,468
+Umbria: 12,011
+Lazio: 36,762
+Campania: 43,635
+Abruzzo: 10,069
+Valle d'Aosta: 2,780
+Molise: 2,911
+Basilicata: 4,379
+Sicilia: 14,666","Piemonte: 27,522
+Liguria: 13,814
+Toscana: 14,507
+Calabria: 5,914
+Lombardia: 47,802
+Marche: 11,227
+Puglia: 20,784
+Sardegna: 6,079
+Veneto: 39,462
+Friuli Venezia Giulia: 14,424
+Emilia-Romagna: 27,468
+Umbria: 12,011
+Lazio: 36,762
+Campania: 43,635
+Abruzzo: 10,069
+Valle d'Aosta: 2,780
+Molise: 2,911
+Basilicata: 4,379
+Sicilia: 14,666","8,32",JA,,
+Wie viele Provinzdatensätze wurden am 16. März 2021 je Region verarbeitet?,"SELECT r.region_name, COUNT(*) AS num_records
+FROM `bigquery-public-data.covid19_italy.data_by_province` AS p
+JOIN `bigquery-public-data.covid19_italy.data_by_region` AS r ON p.region_code = r.region_code
+WHERE DATE(p.date) = '2021-03-16'
+GROUP BY r.region_name;",Medium,"JOIN, LOGICAL CONNECTOR",,"m 16. März 2021 wurde folgende Anzahl an Provinzdatensätzen je Region verarbeitet:
+
+Piemonte: 17.810
+
+Liguria: 10.686
+
+Toscana: 21.372
+
+Calabria: 12.467
+
+Lombardia: 24.934
+
+Marche: 12.467
+
+Puglia: 14.248
+
+Sardegna: 12.467
+
+Veneto: 16.029
+
+Friuli Venezia Giulia: 10.686
+
+Emilia-Romagna: 19.591
+
+Umbria: 7.124
+
+Lazio: 12.467
+
+Campania: 12.467
+
+Abruzzo: 10.686
+
+Valle d'Aosta: 5.343
+
+Molise: 7.124
+
+Basilicata: 7.124
+
+Sicilia: 19.591","Piemonte: 17.810
+
+Liguria: 10.686
+
+Toscana: 21.372
+
+Calabria: 12.467
+
+Lombardia: 24.934
+
+Marche: 12.467
+
+Puglia: 14.248
+
+Sardegna: 12.467
+
+Veneto: 16.029
+
+Friuli Venezia Giulia: 10.686
+
+Emilia-Romagna: 19.591
+
+Umbria: 7.124
+
+Lazio: 12.467
+
+Campania: 12.467
+
+Abruzzo: 10.686
+
+Valle d'Aosta: 5.343
+
+Molise: 7.124","11,32",JA,,
+Wie hoch war die höchste Zahl bestätigter COVID-19-Fälle in einer Provinz pro Region am 17. März 2021?,"SELECT r.region_name, MAX(p.confirmed_cases) AS max_cases
+FROM `bigquery-public-data.covid19_italy.data_by_province` AS p
+JOIN `bigquery-public-data.covid19_italy.data_by_region` AS r ON p.region_code = r.region_code
+WHERE DATE(p.date) = '2021-03-17'
+GROUP BY r.region_name;",Medium,"JOIN, LOGICAL CONNECTOR",,"Am 17. März 2021 war die höchste Zahl bestätigter COVID-19-Fälle in einer Provinz pro Region in Italien wie folgt:
+
+Torino in Piemonte mit 149,462 Fällen
+Genova in Liguria mit 44,726 Fällen
+Prato in Toscana mit 15,159 Fällen
+Crotone in Calabria mit 3,349 Fällen
+Monza e della Brianza in Lombardia mit 64,270 Fällen
+Fermo in Marche mit 8,407 Fällen
+Barletta-Andria-Trani in Puglia mit 17,169 Fällen
+Sud Sardegna in Sardegna mit 6,791 Fällen
+Varese in Lombardia mit 69,000 Fällen
+Bolzano in P.A. Bolzano mit 56,685 Fällen
+Verona in Veneto mit 68,466 Fällen
+Udine in Friuli Venezia Giulia mit 42,221 Fällen
+Bologna in Emilia-Romagna mit 75,099 Fällen
+Napoli in Campania mit 181,506 Fällen
+L'Aquila in Abruzzo mit 14,546 Fällen
+Aosta in Valle d'Aosta mit 8,142 Fällen
+Campobasso in Molise mit 8,352 Fällen
+Bari in Puglia mit 65,967 Fällen
+Potenza in Basilicata mit 11,481 Fällen
+Cosenza in Calabria mit 12,349 Fällen
+Palermo in Sicilia mit 48,211 Fällen.","Torino in Piemonte mit 149,462 Fällen
+Genova in Liguria mit 44,726 Fällen
+Prato in Toscana mit 15,159 Fällen
+Crotone in Calabria mit 3,349 Fällen
+Monza e della Brianza in Lombardia mit 64,270 Fällen
+Fermo in Marche mit 8,407 Fällen
+Barletta-Andria-Trani in Puglia mit 17,169 Fällen
+Sud Sardegna in Sardegna mit 6,791 Fällen
+Varese in Lombardia mit 69,000 Fällen
+Bolzano in P.A. Bolzano mit 56,685 Fällen
+Verona in Veneto mit 68,466 Fällen
+Udine in Friuli Venezia Giulia mit 42,221 Fällen
+Bologna in Emilia-Romagna mit 75,099 Fällen
+Napoli in Campania mit 181,506 Fällen
+L'Aquila in Abruzzo mit 14,546 Fällen
+Aosta in Valle d'Aosta mit 8,142 Fällen
+Campobasso in Molise mit 8,352 Fällen
+Bari in Puglia mit 65,967 Fällen
+Potenza in Basilicata mit 11,481 Fällen
+Cosenza in Calabria mit 12,349 Fällen
+Palermo in Sicilia mit 48,211 Fällen.","16,32",JA,,
+Wie hoch war die niedrigste kumulierte Fallzahl einer Provinz je Region am 18. März 2021?,"SELECT r.region_name, MIN(p.confirmed_cases) AS min_cases
+FROM `bigquery-public-data.covid19_italy.data_by_province` AS p
+JOIN `bigquery-public-data.covid19_italy.data_by_region` AS r ON p.region_code = r.region_code
+WHERE DATE(p.date) = '2021-03-18'
+GROUP BY r.region_name;",Medium,"JOIN, LOGICAL CONNECTOR",,"Am 18. März 2021 betrugen die niedrigsten kumulierten COVID-19-Fallzahlen in den Provinzen der einzelnen Regionen:
+
+Piemonte: 1.299 bestätigte Fälle
+Liguria: 1.528 bestätigte Fälle
+Toscana: 0 bestätigte Fälle
+Calabria: 0 bestätigte Fälle
+Lazio: 21 bestätigte Fälle
+Campania: 110 bestätigte Fälle
+Puglia: 257 bestätigte Fälle
+Veneto: 630 bestätigte Fälle
+Einige Regionen berichteten von keinen bestätigten Fällen in ihren jeweiligen Provinzen.","[{
+  ""region_name"": ""Piemonte"",
+  ""min_cases"": ""1299""
+}, {
+  ""region_name"": ""Liguria"",
+  ""min_cases"": ""1528""
+}, {
+  ""region_name"": ""Toscana"",
+  ""min_cases"": ""0""
+}, {
+  ""region_name"": ""Calabria"",
+  ""min_cases"": ""0""
+}, {
+  ""region_name"": ""Lombardia"",
+  ""min_cases"": ""7994""
+}, {
+  ""region_name"": ""Marche"",
+  ""min_cases"": ""0""
+}, {
+  ""region_name"": ""Puglia"",
+  ""min_cases"": ""257""
+}, {
+  ""region_name"": ""Sardegna"",
+  ""min_cases"": ""0""
+}, {
+  ""region_name"": ""Veneto"",
+  ""min_cases"": ""630""
+}, {
+  ""region_name"": ""Friuli Venezia Giulia"",
+  ""min_cases"": ""0""
+}, {
+  ""region_name"": ""Emilia-Romagna"",
+  ""min_cases"": ""1338""
+}, {
+  ""region_name"": ""Umbria"",
+  ""min_cases"": ""0""
+}, {
+  ""region_name"": ""Lazio"",
+  ""min_cases"": ""21""
+}, {
+  ""region_name"": ""Campania"",
+  ""min_cases"": ""110""
+}, {
+  ""region_name"": ""Abruzzo"",
+  ""min_cases"": ""187""
+}, {
+  ""region_name"": ""Valle d\u0027Aosta"",
+  ""min_cases"": ""9""
+}, {
+  ""region_name"": ""Molise"",
+  ""min_cases"": ""0""
+}, {
+  ""region_name"": ""Basilicata"",
+  ""min_cases"": ""0""
+}, {
+  ""region_name"": ""Sicilia"",
+  ""min_cases"": ""0""
+}]","16,3",Nein,,
+"„Wie hoch ist die Anzahl der Provinzen pro Region, die am 19. März 2021 mehr als 1.000 kumulierte Fälle meldeten?“","SELECT region_name, COUNT(DISTINCT province_name) AS num_provinces
+FROM bigquery-public-data.covid19_italy.data_by_region AS region
+JOIN bigquery-public-data.covid19_italy.data_by_province AS province
+ON region.region_code = province.region_code
+WHERE DATE(region.date) = '2021-03-19'
+AND province.confirmed_cases > 1000
+GROUP BY region_name;",Medium,"JOIN, LOGICAL CONNECTOR",,"m 19. März 2021 überschritten die folgenden Anzahl von Provinzen pro Region in Italien 1.000 kumulierte COVID-19-Fälle:
+
+Piemonte: 10 Provinzen
+Umbria: 4 Provinzen
+Marche: 7 Provinzen
+Lazio: 6 Provinzen
+Abruzzo: 6 Provinzen
+Campania: 7 Provinzen
+Puglia: 8 Provinzen
+Calabria: 6 Provinzen
+Sicilia: 9 Provinzen
+P.A. Bolzano: 1 Provinz
+P.A. Trento: 1 Provinz
+Lombardia: 14 Provinzen
+Veneto: 9 Provinzen
+Friuli Venezia Giulia: 5 Provinzen
+Liguria: 6 Provinzen
+Emilia-Romagna: 11 Provinzen
+Toscana: 11 Provinzen
+Valle d'Aosta: 3 Provinzen
+Basilicata: 3 Provinzen
+Molise: 3 Provinzen
+Sardegna: 5 Provinzen.","[{
+  ""region_name"": ""Liguria"",
+  ""num_provinces"": ""6""
+}, {
+  ""region_name"": ""Calabria"",
+  ""num_provinces"": ""6""
+}, {
+  ""region_name"": ""Marche"",
+  ""num_provinces"": ""7""
+}, {
+  ""region_name"": ""Sardegna"",
+  ""num_provinces"": ""5""
+}, {
+  ""region_name"": ""P.A. Bolzano"",
+  ""num_provinces"": ""1""
+}, {
+  ""region_name"": ""Veneto"",
+  ""num_provinces"": ""9""
+}, {
+  ""region_name"": ""Friuli Venezia Giulia"",
+  ""num_provinces"": ""5""
+}, {
+  ""region_name"": ""Emilia-Romagna"",
+  ""num_provinces"": ""11""
+}, {
+  ""region_name"": ""Campania"",
+  ""num_provinces"": ""7""
+}, {
+  ""region_name"": ""Abruzzo"",
+  ""num_provinces"": ""6""
+}, {
+  ""region_name"": ""Valle d\u0027Aosta"",
+  ""num_provinces"": ""3""
+}, {
+  ""region_name"": ""Basilicata"",
+  ""num_provinces"": ""3""
+}, {
+  ""region_name"": ""Sicilia"",
+  ""num_provinces"": ""9""
+}, {
+  ""region_name"": ""Piemonte"",
+  ""num_provinces"": ""10""
+}, {
+  ""region_name"": ""Toscana"",
+  ""num_provinces"": ""11""
+}, {
+  ""region_name"": ""Lombardia"",
+  ""num_provinces"": ""14""
+}, {
+  ""region_name"": ""Puglia"",
+  ""num_provinces"": ""8""
+}, {
+  ""region_name"": ""P.A. Trento"",
+  ""num_provinces"": ""1""
+}, {
+  ""region_name"": ""Umbria"",
+  ""num_provinces"": ""4""
+}, {
+  ""region_name"": ""Lazio"",
+  ""num_provinces"": ""6""
+}, {
+  ""region_name"": ""Molise"",
+  ""num_provinces"": ""3""
+}]","18,92",JA,,
+Wie viele COVID-19-Provinzmeldungen wurden je Region am 20. März 2021 eingetragen?,"SELECT r.region_name, COUNT(*) AS meldungen
+FROM `bigquery-public-data.covid19_italy.data_by_province` AS p
+JOIN `bigquery-public-data.covid19_italy.data_by_region` AS r ON p.region_code = r.region_code
+WHERE DATE(p.date) = '2021-03-20'
+GROUP BY r.region_name;",Medium,"JOIN, LOGICAL CONNECTOR",,"Am 20. März 2021 wurden die folgenden Anzahl an COVID-19-Provinzmeldungen je Region in Italien eingetragen:
+
+Region 1: 10 Meldungen
+Region 2: 3 Meldungen
+Region 3: 14 Meldungen
+Region 4: 6 Meldungen
+Region 5: 9 Meldungen
+Region 6: 6 Meldungen
+Region 7: 6 Meldungen
+Region 8: 11 Meldungen
+Region 9: 12 Meldungen
+Region 10: 4 Meldungen
+Region 11: 7 Meldungen
+Region 12: 7 Meldungen
+Region 13: 6 Meldungen
+Region 14: 4 Meldungen
+Region 15: 7 Meldungen
+Region 16: 8 Meldungen
+Region 17: 4 Meldungen
+Region 18: 7 Meldungen
+Region 19: 11 Meldungen
+Region 20: 7 Meldungen
+Diese Zahlen zeigen die Verteilung der Meldungen über die verschiedenen Regionen hinweg.","[{
+  ""region_name"": ""Piemonte"",
+  ""meldungen"": ""17810""
+}, {
+  ""region_name"": ""Liguria"",
+  ""meldungen"": ""10686""
+}, {
+  ""region_name"": ""Toscana"",
+  ""meldungen"": ""21372""
+}, {
+  ""region_name"": ""Calabria"",
+  ""meldungen"": ""12467""
+}, {
+  ""region_name"": ""Lombardia"",
+  ""meldungen"": ""24934""
+}, {
+  ""region_name"": ""Marche"",
+  ""meldungen"": ""12467""
+}, {
+  ""region_name"": ""Puglia"",
+  ""meldungen"": ""14248""
+}, {
+  ""region_name"": ""Sardegna"",
+  ""meldungen"": ""12467""
+}, {
+  ""region_name"": ""Veneto"",
+  ""meldungen"": ""16029""
+}, {
+  ""region_name"": ""Friuli Venezia Giulia"",
+  ""meldungen"": ""10686""
+}, {
+  ""region_name"": ""Emilia-Romagna"",
+  ""meldungen"": ""19591""
+}, {
+  ""region_name"": ""Umbria"",
+  ""meldungen"": ""7124""
+}, {
+  ""region_name"": ""Lazio"",
+  ""meldungen"": ""12467""
+}, {
+  ""region_name"": ""Campania"",
+  ""meldungen"": ""12467""
+}, {
+  ""region_name"": ""Abruzzo"",
+  ""meldungen"": ""10686""
+}, {
+  ""region_name"": ""Valle d\u0027Aosta"",
+  ""meldungen"": ""5343""
+}, {
+  ""region_name"": ""Molise"",
+  ""meldungen"": ""7124""
+}, {
+  ""region_name"": ""Basilicata"",
+  ""meldungen"": ""7124""
+}, {
+  ""region_name"": ""Sicilia"",
+  ""meldungen"": ""19591""
+}]","17,84",JA," SELECT region_code, COUNT(*) AS province_count
+FROM bigquery-public-data.covid19_italy.data_by_province
+WHERE DATE(date) = '2021-03-20'
+GROUP BY region_code;
+INFO:root:Executing SQL query: SELECT region_code, COUNT(*) AS province_count
+FROM bigquery-public-data.covid19_italy.data_by_province
+WHERE DATE(date) = '2021-03-20'
+GROUP BY region_code;",
+Wie hoch war die durchschnittliche bisherige Fallzahl je Provinz innerhalb jeder Region am 21. März 2021?,"SELECT r.region_name, AVG(p.confirmed_cases) AS avg_faelle
+FROM `bigquery-public-data.covid19_italy.data_by_province` AS p
+JOIN `bigquery-public-data.covid19_italy.data_by_region` AS r ON p.region_code = r.region_code
+WHERE DATE(p.date) = '2021-03-21'
+GROUP BY r.region_name;",Medium,"JOIN, LOGICAL CONNECTOR",,"Am 21. März 2021 war die durchschnittliche Fallzahl je Provinz innerhalb jeder Region in Italien wie folgt:
+
+Piemonte: 28,891.5 Fälle
+Liguria: 14,189.83 Fälle
+Toscana: 15,196.33 Fälle
+Calabria: 6,215.86 Fälle
+Lombardia: 49,851.43 Fälle
+Marche: 11,881.86 Fälle
+Puglia: 22,066.13 Fälle
+Sardegna: 6,179.57 Fälle
+Veneto: 40,728.33 Fälle
+Friuli Venezia Giulia: 15,275.83 Fälle
+Emilia-Romagna: 28,815.18 Fälle
+Umbria: 12,306.0 Fälle
+Lazio: 38,331.71 Fälle
+Campania: 45,570.29 Fälle
+Abruzzo: 10,420.83 Fälle
+Valle d'Aosta: 2,867.67 Fälle
+Molise: 2,995.0 Fälle
+Basilicata: 4,589.5 Fälle
+Sicilia: 15,076.27 Fälle.","[{
+  ""region_name"": ""Piemonte"",
+  ""avg_faelle"": ""28891.5000000002""
+}, {
+  ""region_name"": ""Liguria"",
+  ""avg_faelle"": ""14189.833333333287""
+}, {
+  ""region_name"": ""Toscana"",
+  ""avg_faelle"": ""15196.333333333407""
+}, {
+  ""region_name"": ""Calabria"",
+  ""avg_faelle"": ""6215.8571428571249""
+}, {
+  ""region_name"": ""Lombardia"",
+  ""avg_faelle"": ""49851.428571428594""
+}, {
+  ""region_name"": ""Marche"",
+  ""avg_faelle"": ""11881.857142857149""
+}, {
+  ""region_name"": ""Puglia"",
+  ""avg_faelle"": ""22066.124999999964""
+}, {
+  ""region_name"": ""Sardegna"",
+  ""avg_faelle"": ""6179.5714285714193""
+}, {
+  ""region_name"": ""Veneto"",
+  ""avg_faelle"": ""40728.33333333335""
+}, {
+  ""region_name"": ""Friuli Venezia Giulia"",
+  ""avg_faelle"": ""15275.833333333334""
+}, {
+  ""region_name"": ""Emilia-Romagna"",
+  ""avg_faelle"": ""28815.181818181984""
+}, {
+  ""region_name"": ""Umbria"",
+  ""avg_faelle"": ""12305.999999999985""
+}, {
+  ""region_name"": ""Lazio"",
+  ""avg_faelle"": ""38331.714285714406""
+}, {
+  ""region_name"": ""Campania"",
+  ""avg_faelle"": ""45570.285714285674""
+}, {
+  ""region_name"": ""Abruzzo"",
+  ""avg_faelle"": ""10420.833333333347""
+}, {
+  ""region_name"": ""Valle d\u0027Aosta"",
+  ""avg_faelle"": ""2867.6666666666638""
+}, {
+  ""region_name"": ""Molise"",
+  ""avg_faelle"": ""2995.0000000000068""
+}, {
+  ""region_name"": ""Basilicata"",
+  ""avg_faelle"": ""4589.5""
+}, {
+  ""region_name"": ""Sicilia"",
+  ""avg_faelle"": ""15076.272727272741""
+}]","19,21",JA,,
+"„Wieviele Provinzen pro Region gibt es die , die am 19. März 2021 1000 kumulierte Fälle überschreiten?“","SELECT region_name, COUNT(DISTINCT province_name) AS num_provinces
+FROM bigquery-public-data.covid19_italy.data_by_region AS region
+JOIN bigquery-public-data.covid19_italy.data_by_province AS province
+ON region.region_code = province.region_code
+WHERE DATE(region.date) = '2021-03-19'
+AND province.confirmed_cases > 1000
+GROUP BY region_name;",Medium,LOGICAL CONNECTOR,,"m 19. März 2021 überschritten die folgenden Anzahl von Provinzen pro Region in Italien 1.000 kumulierte COVID-19-Fälle:
+
+Piemonte: 10 Provinzen
+Umbria: 4 Provinzen
+Marche: 7 Provinzen
+Lazio: 6 Provinzen
+Abruzzo: 6 Provinzen
+Campania: 7 Provinzen
+Puglia: 8 Provinzen
+Calabria: 6 Provinzen
+Sicilia: 9 Provinzen
+P.A. Bolzano: 1 Provinz
+P.A. Trento: 1 Provinz
+Lombardia: 14 Provinzen
+Veneto: 9 Provinzen
+Friuli Venezia Giulia: 5 Provinzen
+Liguria: 6 Provinzen
+Emilia-Romagna: 11 Provinzen
+Toscana: 11 Provinzen
+Valle d'Aosta: 3 Provinzen
+Basilicata: 3 Provinzen
+Molise: 3 Provinzen
+Sardegna: 5 Provinzen.","[{
+  ""region_name"": ""Liguria"",
+  ""num_provinces"": ""6""
+}, {
+  ""region_name"": ""Calabria"",
+  ""num_provinces"": ""6""
+}, {
+  ""region_name"": ""Marche"",
+  ""num_provinces"": ""7""
+}, {
+  ""region_name"": ""Sardegna"",
+  ""num_provinces"": ""5""
+}, {
+  ""region_name"": ""P.A. Bolzano"",
+  ""num_provinces"": ""1""
+}, {
+  ""region_name"": ""Veneto"",
+  ""num_provinces"": ""9""
+}, {
+  ""region_name"": ""Friuli Venezia Giulia"",
+  ""num_provinces"": ""5""
+}, {
+  ""region_name"": ""Emilia-Romagna"",
+  ""num_provinces"": ""11""
+}, {
+  ""region_name"": ""Campania"",
+  ""num_provinces"": ""7""
+}, {
+  ""region_name"": ""Abruzzo"",
+  ""num_provinces"": ""6""
+}, {
+  ""region_name"": ""Valle d\u0027Aosta"",
+  ""num_provinces"": ""3""
+}, {
+  ""region_name"": ""Basilicata"",
+  ""num_provinces"": ""3""
+}, {
+  ""region_name"": ""Sicilia"",
+  ""num_provinces"": ""9""
+}, {
+  ""region_name"": ""Piemonte"",
+  ""num_provinces"": ""10""
+}, {
+  ""region_name"": ""Toscana"",
+  ""num_provinces"": ""11""
+}, {
+  ""region_name"": ""Lombardia"",
+  ""num_provinces"": ""14""
+}, {
+  ""region_name"": ""Puglia"",
+  ""num_provinces"": ""8""
+}, {
+  ""region_name"": ""P.A. Trento"",
+  ""num_provinces"": ""1""
+}, {
+  ""region_name"": ""Umbria"",
+  ""num_provinces"": ""4""
+}, {
+  ""region_name"": ""Lazio"",
+  ""num_provinces"": ""6""
+}, {
+  ""region_name"": ""Molise"",
+  ""num_provinces"": ""3""
+}]","21,2",JA,,
+"„Welche Regionen meldeten vom 1. bis 3. April 2021 an einem Tag über 500 neue Fälle, mehr als 10 Todesfälle und über 50 Patienten mit Symptomen? Nenne zwei davon.“^","SELECT 
+  region_name, 
+  DATE(date) AS report_date, 
+  total_confirmed_cases, 
+  deaths, 
+  tests_performed
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE 
+  DATE(date) BETWEEN '2021-04-01' AND '2021-04-03'
+  AND new_total_confirmed_cases > 500
+  AND deaths > 10
+  AND hospitalized_patients_with_symptoms > 50
+GROUP BY 
+  region_name, 
+  DATE(date), 
+  total_confirmed_cases, 
+  deaths, 
+  tests_performed
+LIMIT 2;
+",Hard,LOGICAL CONNECTOR,,"Die Regionen, die vom 1. bis 3. April 2021 an einem Tag mehr als 500 neue Fälle, mehr als 10 Todesfälle und über 50 Patienten mit Symptomen meldeten, sind:
+
+Piemonte
+Marche
+Wenn Sie weitere Informationen oder Details benötigen, lassen Sie es mich bitte wissen!
+
+","Piemonte, Marche","8,91",JA,,
+"„Welche Regionen hatten am 1. März 2021 mehr als 800 neue Fälle, über 100 Intensivpatienten und mehr als 500 Genesene? Zeige Region, Datum, neue Fälle, ICU-Patienten und Genesene.“","SELECT 
+  region_name, 
+  DATE(date) AS tag,
+  MAX(new_total_confirmed_cases) AS new_cases, 
+  MAX(hospitalized_patients_intensive_care) AS icu, 
+  MAX(recovered) AS recovered
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-01'
+  AND new_total_confirmed_cases > 800
+  AND hospitalized_patients_intensive_care > 100
+  AND recovered > 500
+GROUP BY region_name, DATE(date);
+",Hard, LOGICAL CONNECTOR,,"Am 1. März 2021 meldeten die Regionen Piemonte, Lazio, Campania, Lombardia, Emilia-Romagna und Toscana mehr als 800 neue Fälle, über 100 ICU-Patienten und über 500 Genesene.","[{
+  ""region_name"": ""Piemonte"",
+  ""tag"": ""2021-03-01"",
+  ""new_cases"": ""1155"",
+  ""icu"": ""175"",
+  ""recovered"": ""222293""
+}, {
+  ""region_name"": ""Lazio"",
+  ""tag"": ""2021-03-01"",
+  ""new_cases"": ""1044"",
+  ""icu"": ""223"",
+  ""recovered"": ""193638""
+}, {
+  ""region_name"": ""Campania"",
+  ""tag"": ""2021-03-01"",
+  ""new_cases"": ""1896"",
+  ""icu"": ""140"",
+  ""recovered"": ""187264""
+}, {
+  ""region_name"": ""Lombardia"",
+  ""tag"": ""2021-03-01"",
+  ""new_cases"": ""2135"",
+  ""icu"": ""441"",
+  ""recovered"": ""511811""
+}, {
+  ""region_name"": ""Emilia-Romagna"",
+  ""tag"": ""2021-03-01"",
+  ""new_cases"": ""2597"",
+  ""icu"": ""236"",
+  ""recovered"": ""208350""
+}, {
+  ""region_name"": ""Toscana"",
+  ""tag"": ""2021-03-01"",
+  ""new_cases"": ""877"",
+  ""icu"": ""172"",
+  ""recovered"": ""133961""
+}]","12,1",JA,,
+Welche Regionen hatten am 1. April 2021 mehr aktive Fälle als am 31. März 2021?,"SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-04-01'
+  AND total_current_confirmed_cases > (
+    SELECT total_current_confirmed_cases
+    FROM `bigquery-public-data.covid19_italy.data_by_region` AS prev
+    WHERE DATE(prev.date) = '2021-03-31' AND prev.region_name = `bigquery-public-data.covid19_italy.data_by_region`.region_name
+);",Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Es tut mir leid, aber ich konnte die Daten nicht abrufen, um festzustellen, welche Regionen am 1. April 2021 mehr aktive COVID-19-Fälle als am 31. März 2021 hatten. Bitte versuchen Sie es später erneut oder stellen Sie eine andere Anfrage.","[{
+  ""region_name"": ""Umbria""
+}, {
+  ""region_name"": ""Abruzzo""
+}, {
+  ""region_name"": ""Puglia""
+}, {
+  ""region_name"": ""Calabria""
+}, {
+  ""region_name"": ""Sicilia""
+}, {
+  ""region_name"": ""Sardegna""
+}, {
+  ""region_name"": ""P.A. Trento""
+}, {
+  ""region_name"": ""Lombardia""
+}, {
+  ""region_name"": ""Liguria""
+}, {
+  ""region_name"": ""Toscana""
+}, {
+  ""region_name"": ""Valle d\u0027Aosta""
+}, {
+  ""region_name"": ""Basilicata""
+}]","21,22",JA,"SELECT region_name
+FROM bigquery-public-data.covid19_italy.data_by_region
+WHERE DATE(date) = '2021-04-01' 
+AND total_current_confirmed_cases > (
+    SELECT total_current_confirmed_cases
+    FROM bigquery-public-data.covid19_italy.data_by_region
+    WHERE DATE(date) = '2021-03-31'
+    AND region_code = data_by_region.region_code    - query davor : SELECT region_name
+FROM bigquery-public-data.covid19_italy.data_by_region AS current
+WHERE DATE(current.date) = '2021-04-01' 
+AND current.total_current_confirmed_cases > (
+    SELECT total_current_confirmed_cases
+    FROM bigquery-public-data.covid19_italy.data_by_region AS previous
+    WHERE DATE(previous.date) = '2021-03-31'
+    AND previous.region_code = current.region_code - query davor : - SELECT region_name
+FROM bigquery-public-data.covid19_italy.data_by_region
+WHERE DATE(date) = '2021-04-01' 
+AND total_current_confirmed_cases > (
+    SELECT total_current_confirmed_cases
+    FROM bigquery-public-data.covid19_italy.data_by_region
+    WHERE DATE(date) = '2021-03-31'
+    AND data_by_region.region_code = region_code
+)",
+Welche Regionen hatten am 1. April 2021 mehr neue Fälle als der nationale Durchschnitt?,"SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-04-01'
+  AND new_total_confirmed_cases > (
+    SELECT AVG(new_total_confirmed_cases)
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-04-01'
+);",Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Am 1. April 2021 hatten die folgenden Regionen mehr aktive Fälle (aktuelle bestätigte Fälle) als am 31. März 2021:
+
+Umbria
+
+Aktive Fälle am 1. April: 4,812
+Aktive Fälle am 31. März: 4,806
+Sicilia
+
+Aktive Fälle am 1. April: 19,870
+Aktive Fälle am 31. März: 18,689
+Die restlichen Regionen hatten entweder weniger oder gleich viele aktive Fälle an diesem Tag im Vergleich zum Vortag. Wenn Sie weitere Informationen benötigen, lassen Sie es mich bitte wissen!","[{
+  ""region_name"": ""Piemonte""
+}, {
+  ""region_name"": ""Lazio""
+}, {
+  ""region_name"": ""Campania""
+}, {
+  ""region_name"": ""Puglia""
+}, {
+  ""region_name"": ""Sicilia""
+}, {
+  ""region_name"": ""Lombardia""
+}, {
+  ""region_name"": ""Veneto""
+}, {
+  ""region_name"": ""Emilia-Romagna""
+}, {
+  ""region_name"": ""Toscana""
+}]","12,53",Nein,"statt eine Query wurden 2 Querys ausgeführt und verglichen , eine schlug fehl",
+"Welche Regionen erscheinen am 1. April 2021 in den COVID-19-Daten, aber nicht am 2. April 2021?","SELECT DISTINCT region_name
+FROM bigquery-public-data.covid19_italy.data_by_region
+WHERE DATE(date) = '2021-04-01'
+AND region_name NOT IN (
+    SELECT region_name
+    FROM bigquery-public-data.covid19_italy.data_by_region
+    WHERE DATE(date) = '2021-04-02'
+)",Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Am 1. April 2021 erscheinen alle Regionen, die auch am 2. April 2021 gemeldet wurden. Es gibt keine Regionen, die am 1. April 2021 in den COVID-19-Daten erscheinen, aber nicht am 2. April 2021. Wenn Sie weitere Informationen benötigen oder andere Fragen haben, lassen Sie es mich bitte wissen!",There is no data to display,"11,12",JA,,
+"Welche Regionen hatten am 1. März 2021 mehr als neue 1000 Fälle, aber am 2. März 2021 nicht?","SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-01' AND new_total_confirmed_cases > 1000
+
+EXCEPT DISTINCT
+
+SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-02' AND new_total_confirmed_cases > 1000;",Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Am 1. März 2021 hatten die folgenden Regionen mehr als 1.000 neue Fälle gemeldet, waren jedoch am 2. März 2021 nicht dabei:
+
+Keine Regionen.
+Alle Regionen, die am 1. März 2021 mehr als 1.000 neue Fälle hatten (Piemonte, Lazio, Campania, Lombardia, Emilia-Romagna), waren ebenfalls am 2. März 2021 gemeldet. Wenn Sie weitere Informationen oder spezifischere Fragen haben, lassen Sie es mich bitte wisse",There is no data to display.,"12,89",JA,,
+Welche Regionen hatten am 5. Februar 2021 weniger neue Fälle als am Vortag?,"SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-02-05'
+  AND new_total_confirmed_cases < (
+    SELECT new_total_confirmed_cases
+    FROM `bigquery-public-data.covid19_italy.data_by_region` AS prev
+    WHERE DATE(prev.date) = '2021-02-04' AND prev.region_name = `bigquery-public-data.covid19_italy.data_by_region`.region_name
+);",Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Am 5. Februar 2021 hatten die folgenden Regionen weniger neue Fälle als am Vortag (4. Februar 2021):
+
+Marche: 414 neue Fälle (am 4. Februar: 480)
+Lazio: 1,141 neue Fälle (am 4. Februar: 1,174)
+Abruzzo: 276 neue Fälle (am 4. Februar: 526)
+Sicilia: 616 neue Fälle (am 4. Februar: 789)
+Sardegna: 169 neue Fälle (am 4. Februar: 205)
+P.A. Bolzano: 687 neue Fälle (am 4. Februar: 747)
+P.A. Trento: 202 neue Fälle (am 4. Februar: 240)
+Veneto: 668 neue Fälle (am 4. Februar: 896)
+Liguria: 332 neue Fälle (am 4. Februar: 489)
+Toscana: 703 neue Fälle (am 4. Februar: 760)
+Valle d'Aosta: 8 neue Fälle (am 4. Februar: 11)
+Wenn Sie weitere Informationen benötigen oder Fragen haben, lassen Sie es mich bitte wissen!","[{
+  ""region_name"": ""Marche""
+}, {
+  ""region_name"": ""Lazio""
+}, {
+  ""region_name"": ""Abruzzo""
+}, {
+  ""region_name"": ""Sicilia""
+}, {
+  ""region_name"": ""Sardegna""
+}, {
+  ""region_name"": ""P.A. Bolzano""
+}, {
+  ""region_name"": ""P.A. Trento""
+}, {
+  ""region_name"": ""Veneto""
+}, {
+  ""region_name"": ""Liguria""
+}, {
+  ""region_name"": ""Toscana""
+}, {
+  ""region_name"": ""Valle d\u0027Aosta""
+}]","13,45",JA," SELECT region_name
+FROM bigquery-public-data.covid19_italy.data_by_region
+WHERE DATE(date) = '2021-02-05'
+AND new_total_confirmed_cases < 0
+AND region_name IS NOT NULL;","❌ Vom Bot generierte SQL:
+sql
+Copy
+Edit
+SELECT region_name
+FROM bigquery-public-data.covid19_italy.data_by_region
+WHERE DATE(date) = '2021-02-05'
+  AND new_total_confirmed_cases < 0
+  AND region_name IS NOT NULL;
+❌ Beobachtung:
+Die Query prüft fälschlicherweise, ob new_total_confirmed_cases < 0
+
+Solche Werte kommen in echten Daten nicht vor
+
+Resultat: ""Keine Daten gefunden""
+→ Antwort ist formal korrekt, aber inhaltlich falsch interpretiert
+
+✅ Richtige SQL-Query:
+sql
+Copy
+Edit
+SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region` AS current
+WHERE DATE(current.date) = '2021-02-05'
+  AND current.new_total_confirmed_cases < (
+    SELECT new_total_confirmed_cases
+    FROM `bigquery-public-data.covid19_italy.data_by_region` AS prev
+    WHERE DATE(prev.date) = '2021-02-04'
+      AND prev.region_name = current.region_name
+  );
+✅ Beschreibung:
+Vergleicht new_total_confirmed_cases vom 5. Februar mit dem 4. Februar für jede Region
+
+Gibt nur Regionen zurück, bei denen die Neuinfektionen gesunken sind
+"
+Welche Regionen meldeten am 2. April 2021 mehr als 1.000 neue Fälle bei gleichzeitig unterdurchschnittlicher Testanzahl?“,"SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region` AS curr
+WHERE DATE(curr.date) = '2021-04-02'
+  AND curr.new_total_confirmed_cases > 1000
+  AND curr.tests_performed < (
+    SELECT AVG(tests_performed)
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-04-02'
+  );
+",Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Puglia und Sicilia meldeten mehr als 1000 neue Fälle, jedoch mit einer Testzahl, die unter dem Durchschnitt an Tests lag.",Puglia,"9,12",JA,,
+Welche Regionen meldeten am 12. Februar 2021 mehr neue Fälle als der Durchschnitt des Monats?,"SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-02-12'
+  AND new_total_confirmed_cases > (
+    SELECT AVG(new_total_confirmed_cases)
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE EXTRACT(MONTH FROM date) = 2 AND EXTRACT(YEAR FROM date) = 2021
+);",Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Am 12. Februar 2021 meldeten die folgenden Regionen in Italien mehr neue COVID-19-Fälle als der Durchschnitt des Monats: Piemonte, Lazio, Campania, Puglia, P.A. Bolzano, Lombardia, Veneto, Emilia-Romagna und Toscana.Am 12. Februar 2021 meldeten die folgenden Regionen mehr neue Fälle als der Durchschnitt des Monats:
+
+Piemonte
+Lazio
+Campania
+Puglia
+P.A. Bolzano
+Lombardia
+Veneto
+Emilia-Romagna
+Toscana
+Wenn Sie weitere Informationen benötigen oder andere Fragen haben, lassen Sie es mich bitte wissen!","Piemonte, Lazio
+Campania
+Puglia
+P.A. Bolzano
+Lombardia
+Veneto
+Emilia-Romagna
+Toscana","21,72",JA,,
+"Welche Regionen hatten am 5. März 2021 mehr als 500 neue Fälle, mehr als 50 Todesfälle und mehr als 300 Genesene?","SELECT region_name, new_total_confirmed_cases, deaths, recovered
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-05'
+  AND new_total_confirmed_cases > 500
+  AND deaths > 50
+  AND recovered > 300
+GROUP BY region_name, new_total_confirmed_cases, deaths, recovered;",Hard,LOGICAL CONNECTOR,,"Am 5. März 2021 meldeten die folgenden Regionen mehr als 500 neue Fälle, mehr als 50 Todesfälle und mehr als 300 Genesene:
+
+Piemonte
+Marche
+Lazio
+Campania
+Puglia
+Sicilia
+Lombardia
+Veneto
+Friuli Venezia Giulia
+Emilia-Romagna
+Toscana","Piemonte: 2,283 neue Fälle, 9,461 Todesfälle, 225,923 Genesene
+Marche: 1,027 neue Fälle, 2,307 Todesfälle, 58,913 Genesene
+Lazio: 1,525 neue Fälle, 6,016 Todesfälle, 198,629 Genesene
+Campania: 2,842 neue Fälle, 4,427 Todesfälle, 190,181 Genesene
+Puglia: 1,418 neue Fälle, 4,072 Todesfälle, 114,497 Genesene
+Sicilia: 519 neue Fälle, 4,213 Todesfälle, 128,329 Genesene
+Lombardia: 5,210 neue Fälle, 28,638 Todesfälle, 519,186 Genesene
+Veneto: 1,505 neue Fälle, 9,936 Todesfälle, 302,366 Genesene
+Friuli Venezia Giulia: 823 neue Fälle, 2,888 Todesfälle, 65,341 Genesene
+Emilia-Romagna: 3,246 neue Fälle, 10,721 Todesfälle, 212,341 Genesene
+Toscana: 1,231 neue Fälle, 4,761 Todesfälle, 136,890 Genesene.","22,43",JA,,
+"Welche Regionen hatten am 4. März 2021 über 900 neue Fälle, mehr als 500 ICU-Patienten und mehr als 1000 Genesene?","SELECT region_name, new_total_confirmed_cases, hospitalized_patients_intensive_care, recovered
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-04'
+  AND new_total_confirmed_cases > 900
+  AND hospitalized_patients_intensive_care > 500
+  AND recovered > 1000
+GROUP BY region_name, new_total_confirmed_cases, hospitalized_patients_intensive_care, recovered;",Hard,LOGICAL CONNECTOR,,"Am 4. März 2021 meldete die Region Lombardia über 900 neue Fälle, mehr als 500 Patienten in der Intensivpflege und mehr als 1.000 Genesene:
+
+Neue Fälle: 5.174
+ICU-Patienten: 532
+Genesene: 517.771
+Wenn Sie weitere Informationen benötigen oder andere Fragen haben, lassen Sie es mich bitte wissen!",Lombardia,"9,32",JA,,
+"Welche Regionen hatten am 3. März 2021 mehr neue Fälle, mehr Todesfälle und mehr ICU-Patienten als jeweils der Median?","SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-03'
+  AND new_total_confirmed_cases > (
+    SELECT APPROX_QUANTILES(new_total_confirmed_cases, 2)[OFFSET(1)]
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-03'
+  )
+  AND deaths > (
+    SELECT APPROX_QUANTILES(deaths, 2)[OFFSET(1)]
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-03'
+  )
+  AND hospitalized_patients_intensive_care > (
+    SELECT APPROX_QUANTILES(hospitalized_patients_intensive_care, 2)[OFFSET(1)]
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-03'
+  );",Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Es tut mir leid, aber ich konnte die Daten nicht abrufen, um festzustellen, welche Regionen am 3. März 2021 mehr neue Fälle, mehr Todesfälle und mehr ICU-Patienten als jeweils der Median hatten. Bitte versuchen Sie es später erneut oder stellen Sie eine andere Anfrage.","Nach den Daten von diesem Tag hatten folgende Regionen Werte, die über den Median lagen:
+
+Lombardia
+Neue Fälle: 4,590
+Todesfälle: 28,518
+ICU-Patienten: 506
+Campania
+Neue Fälle: 1,520
+Todesfälle: 5,975
+ICU-Patienten: 237
+Emilia-Romagna
+Neue Fälle: 2,456
+Todesfälle: 10,650
+ICU-Patienten: 251","21,65",Nein,"SELECT region_name, new_total_confirmed_cases, deaths, hospitalized_patients_intensive_care 
+FROM `bigquery-public-data.covid19_italy.data_by_region` 
+WHERE DATE(date) = '2021-03-03' 
+AND new_total_confirmed_cases > (
+    SELECT PERCENTILE_CONT(new_total_confirmed_cases, 0.5) OVER() 
+    FROM `bigquery-public-data.covid19_italy.data_by_region` 
+    WHERE DATE(date) = '2021-03-03'
+) 
+AND deaths > (
+    SELECT PERCENTILE_CONT(deaths, 0.5) OVER() 
+    FROM `bigquery-public-data.covid19_italy.data_by_region` 
+    WHERE DATE(date) = '2021-03-03'
+) 
+AND hospitalized_patients_intensive_care > (
+    SELECT PERCENTILE_CONT(hospitalized_patients_intensive_care, 0.5) OVER() 
+    FROM `bigquery-public-data.covid19_italy.data_by_region` 
+    WHERE DATE(date) = '2021-03-03'
+).  query davor : egion_name, new_total_confirmed_cases, deaths, hospitalized_patients_intensive_care 
+FROM `bigquery-public-data.covid19_italy.data_by_region` 
+WHERE DATE(date) = '2021-03-03' 
+AND new_total_confirmed_cases > (
+    SELECT PERCENTILE_CONT(new_total_confirmed_cases, 0.5) OVER() 
+    FROM `bigquery-public-data.covid19_italy.data_by_region` 
+    WHERE DATE(date) = '2021-03-03'
+) 
+AND deaths > (
+    SELECT PERCENTILE_CONT(deaths, 0.5) OVER() 
+    FROM `bigquery-public-data.covid19_italy.data_by_region` 
+    WHERE DATE(date) = '2021-03-03'
+) 
+AND hospitalized_patients_intensive_care > (
+    SELECT PERCENTILE_CONT(hospitalized_patients_intensive_care, 0.5) OVER() 
+    FROM `bigquery-public-data.covid19_italy.data_by_region` 
+    WHERE DATE(date) = '2021-03-03'
+) query davor : SELECT region_name, new_total_confirmed_cases, deaths, hospitalized_patients_intensive_care 
+FROM `bigquery-public-data.covid19_italy.data_by_region` 
+WHERE DATE(date) = '2021-03-03' 
+AND new_total_confirmed_cases > (
+    SELECT PERCENTILE_CONT(new_total_confirmed_cases, 0.5) OVER() 
+    FROM `bigquery-public-data.covid19_italy.data_by_region` 
+    WHERE DATE(date) = '2021-03-03'
+) 
+AND deaths > (
+    SELECT PERCENTILE_CONT(deaths, 0.5) OVER() 
+    FROM `bigquery-public-data.covid19_italy.data_by_region` 
+    WHERE DATE(date) = '2021-03-03'
+) 
+AND hospitalized_patients_intensive_care > (
+    SELECT PERCENTILE_CONT(hospitalized_patients_intensive_care, 0.5) OVER() 
+    FROM `bigquery-public-data.covid19_italy.data_by_region` 
+    WHERE DATE(date) = '2021-03-03'
+)",
+"Welche Regionen hatten am 6. März 2021 über 1000 neue Fälle, über 100 Todesfälle und über 700 ICU-Patienten?å","SELECT region_name, new_total_confirmed_cases, deaths, hospitalized_patients_intensive_care
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-06'
+  AND new_total_confirmed_cases > 1000
+  AND deaths > 100
+  AND  > 700
+GROUP BY region_name, new_total_confirmed_cases, deaths, hospitalized_patients_intensive_care;",Hard,LOGICAL CONNECTOR,,"Am 6. März 2021 wurden keine Regionen gefunden, die über 1000 neue Fälle, über 100 Todesfälle und über 700 ICU-Patienten gemeldet haben.",keine regionen vorhanden,"18,43",JA,,
+"Wie viele Tests wurden am 1. März 2021 durchschnittlich in den Regionen durchgeführt, die an diesem Tag weniger Todesfälle als der landesweite Durchschnitt verzeichneten?","SELECT AVG(tests_performed) AS avg_tests
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-01'
+  AND region_name NOT IN (
+    SELECT region_name
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-01'
+      AND deaths > (
+        SELECT AVG(deaths)
+        FROM `bigquery-public-data.covid19_italy.data_by_region`
+        WHERE DATE(date) = '2021-03-01'
+      )
+);",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Am 1. März 2021 wurde in den Regionen, die an diesem Tag weniger Todesfälle als der landesweite Durchschnitt verzeichneten, durchschnittlich etwa 1.017.740 Tests durchgeführt.
+
+Wenn Sie weitere Informationen wünschen oder andere Fragen haben, lassen Sie es mich bitte wissen!",1.017.739.933.333,"8,91",JA,,
+Welche Regionen meldeten am 2. März 2021 mehr neue Fälle als der Median der Regionen mit unterdurchschnittlicher ICU-Belegung?,"SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-02'
+  AND new_total_confirmed_cases > (
+    SELECT APPROX_QUANTILES(new_total_confirmed_cases, 2)[OFFSET(1)]
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-02'
+      AND hospitalized_patients_intensive_care < (
+        SELECT AVG(hospitalized_patients_intensive_care)
+        FROM `bigquery-public-data.covid19_italy.data_by_region`
+        WHERE DATE(date) = '2021-03-02'
+      )
+);",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Es scheint, dass es ein technisches Problem mit der Abfrage gibt, um die gewünschten Informationen abzurufen.
+
+Ich kann derzeit die Regionen nicht finden, die am 2. März 2021 mehr neue Fälle gemeldet haben als der Median der Regionen mit unterdurchschnittlicher ICU-Belegung.
+
+Möchten Sie es mit einer anderen Anfrage versuchen oder benötigen Sie Informationen zu einem anderen Datum oder anderen Daten?","Piemonte, Umbria, Marche, Lazio, Abruzzo, Campania, Puglia, Sicilia, P.A. Bolzano, Lombardia, Veneto, Friuli Venezia Giulia, Liguria, Emilia-Romagna und Toscana.","32,84",Nein,,
+Welche Regionen hatten am 5. März 2021 mehr aktive Fälle als der höchste Wert einer Region mit weniger als 100 ICU-Patienten?,"SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-05'
+  AND total_current_confirmed_cases > (
+    SELECT MAX(total_current_confirmed_cases)
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-05' AND hospitalized_patients_intensive_care < 100
+);",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Am 5. März 2021 hatten die folgenden Regionen mehr aktive Fälle als der höchste Wert einer Region mit weniger als 100 ICU-Patienten:
+
+Piemonte: 20.501 aktive Fälle
+Lazio: 36.562 aktive Fälle
+Campania: 85.210 aktive Fälle
+Puglia: 34.250 aktive Fälle
+Sicilia: 22.678 aktive Fälle
+Lombardia: 76.128 aktive Fälle
+Veneto: 27.440 aktive Fälle
+Emilia-Romagna: 50.314 aktive Fälle
+Toscana: 20.152 aktive Fälle
+","1	Piemonte
+2	Lazio
+3	Campania
+4	Puglia
+5	Sicilia
+6	Lombardia
+7	Veneto
+8	Emilia-Romagna
+9	Toscana","7,2",JA,,
+"Wie viele Einträge wurden am 3. März 2021 in Regionen aufgezeichnet, deren Todeszahlen unter allen Regionen mit mehr als 800 neuen Fällen lagen?","SELECT COUNT(*) AS entry_count
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-03'
+  AND deaths < (
+    SELECT MIN(deaths)
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-03' AND new_total_confirmed_cases > 800
+);
+",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Am 3. März 2021 wurden 19 Einträge in den Regionen aufgezeichnet, deren Todeszahlen unter den Todeszahlen aller Regionen mit mehr als 800 neuen Fällen lagen",12,"13,67",Nein,,
+Welche Regionen hatten am 6. März 2021 mehr neue Fälle als der Median der Regionen mit weniger als 100 Todesfällen?,"SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-06'
+  AND new_total_confirmed_cases > (
+    SELECT APPROX_QUANTILES(new_total_confirmed_cases, 2)[OFFSET(1)]
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-06' AND deaths < 100
+);",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"s gibt ein technisches Problem beim Abrufen der gewünschten Daten über neue Fälle am 6. März 2021, die im Vergleich zu den Regionen mit weniger als 100 Todesfällen lagen.
+
+Leider kann ich diese Informationen im Moment nicht bereitstellen. Möchten Sie eine andere Anfrage stellen, oder kann ich Ihnen auf andere Weise helfen?",keine Region,"23,39",Nein,,
+Welche Regionen meldeten am 4. März 2021 mehr neue Fälle als jede Region mit weniger als 50 Genesenen?,"SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-04'
+  AND new_total_confirmed_cases > (
+    SELECT MAX(new_total_confirmed_cases)
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-04' AND recovered < 50
+);",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"s gibt derzeit ein technisches Problem beim Abrufen der Informationen über die Regionen, die am 4. März 2021 mehr neue Fälle gemeldet haben als jede Region mit weniger als 50 Genesenen.
+
+Ich kann diese spezifischen Daten im Moment nicht bereitstellen. Wäre es möglich, eine andere Anfrage zu stellen oder gibt es etwas anderes, bei dem ich Ihnen helfen kann?",keine Region,"13,42",Nein,,
+"Welche Regionen hatten am 8. März 2021 überdurchschnittlich viele ICU-Patienten, aber weniger neue Fälle als der Median aller Regionen?","SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-08'
+  AND hospitalized_patients_intensive_care > (
+    SELECT AVG(hospitalized_patients_intensive_care)
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-08'
+  )
+  AND new_total_confirmed_cases < (
+    SELECT APPROX_QUANTILES(new_total_confirmed_cases, 2)[OFFSET(1)]
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-08'
+);",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Am 8. März 2021 hatten die folgenden Regionen überdurchschnittlich viele ICU-Patienten (Intensivpflegepatienten) und weniger neue Fälle als der Median aller Regionen (349 neue Fälle):
+
+Piemonte: 217 ICU-Patienten
+Lazio: 253 ICU-Patienten
+Campania: 148 ICU-Patienten
+Puglia: 169 ICU-Patienten
+Lombardia: 597 ICU-Patienten
+Veneto: 137 ICU-Patienten
+Emilia-Romagna: 286 ICU-Patienten
+Toscana: 202 ICU-Patienten
+",keine Region,"12,21",Nein,,
+Welche Regionen meldeten am 9. März 2021 mehr aktive Fälle als alle Regionen mit unterdurchschnittlicher Anzahl an Tests?,"SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-09'
+  AND total_current_confirmed_cases > (
+    SELECT MAX(total_current_confirmed_cases)
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-09'
+      AND tests_performed < (
+        SELECT AVG(tests_performed)
+        FROM `bigquery-public-data.covid19_italy.data_by_region`
+        WHERE DATE(date) = '2021-03-09'
+      )
+);",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"m 9. März 2021 meldeten die folgenden Regionen mehr aktive Fälle als alle Regionen mit einer unterdurchschnittlichen Anzahl an durchgeführten Tests:
+
+Piemonte
+Marche
+Lazio
+Abruzzo
+Campania
+Puglia
+Sicilia
+Lombardia
+Veneto
+Friuli Venezia Giulia
+Emilia-Romagna
+Toscana
+Sardegna","Lazio,Campania,Lombardia,Emilia-Romagna","13,1",Nein,,
+„Welche Regionen überschritten am 7. März 2021 den Median der ICU-Patientenzahl unter den Regionen mit mehr als 1.000 neuen Fällen?“,"SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-07'
+  AND hospitalized_patients_intensive_care > (
+    SELECT APPROX_QUANTILES(hospitalized_patients_intensive_care, 2)[OFFSET(1)]
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-07' AND new_total_confirmed_cases > 1000
+);",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Es gab ein technisches Problem beim Versuch, die mediane Anzahl der ICU-Patienten abzurufen, die am 7. März 2021 in Regionen mit mehr als 1.000 neuen Fällen überschritten wurde.
+
+Leider kann ich diese spezifischen Daten im Moment nicht bereitstellen. Möchten Sie eine andere Anfrage stellen oder gibt es etwas anderes, bei dem ich Ihnen helfen kann?","Piemonte
+Lazio
+Lombardia
+Emilia-Romagna","23,34",Nein,,
+"Welche Regionen meldeten am 11. März 2021 mehr als 800 neue Fälle, aber gleichzeitig weniger Genesene als jede andere Region mit über 10 Todesfällen?","SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-11'
+  AND new_total_confirmed_cases > 800
+  AND recovered < ALL (
+    SELECT recovered
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-11' AND deaths > 10
+);",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Am 11. März 2021 meldeten die folgenden Regionen mehr als 800 neue Fälle, hatten aber gleichzeitig weniger Genesene als jede andere Region mit über 10 Todesfällen:
+
+Piemonte
+Marche
+Lazio
+Campania
+Puglia
+Veneto
+Friuli Venezia Giulia
+Emilia-Romagna
+Toscana","Lazio,Campania,Lombardia,Emilia-Romagna","13,01",Nein,,
+Welche Regionen hatten am 12. März 2021 mehr aktive Fälle als jede Region mit unterdurchschnittlicher Genesungsrate?,"SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-12'
+  AND total_current_confirmed_cases > (
+    SELECT MAX(total_current_confirmed_cases)
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-12'
+      AND recovered < (
+        SELECT AVG(recovered)
+        FROM `bigquery-public-data.covid19_italy.data_by_region`
+        WHERE DATE(date) = '2021-03-12'
+      )",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Es gab ein technisches Problem beim Abrufen der Informationen zu den Regionen am 12. März 2021, die mehr aktive Fälle als die Regionen mit einer unterdurchschnittlichen Genesungsrate hatten.
+
+","Lazio
+Campania
+Lombardia
+Emilia-Romagna","32,12",Nein,,
+"„Wie hoch war die durchschnittliche Zahl an neuen Fällen in Regionen, die weniger ICU-Patienten als der Durchschnitt aller Regionen mit mehr als 500 Todesfällen am 13. März 2021 meldeten?“","SELECT AVG(new_total_confirmed_cases) AS avg_new_cases
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-13'
+  AND hospitalized_patients_intensive_care < (
+    SELECT AVG(hospitalized_patients_intensive_care)
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-13' AND deaths > 500
+  );
+",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Am 13. März 2021 lag die durchschnittliche Zahl an neuen Fällen in den Regionen, die weniger ICU-Patienten als der Durchschnitt aller Regionen mit mehr als 500 Todesfällen meldeten, bei 130 neuen Fällen.",531,"13,41",Nein,,"❌ Was fehlt?
+👉 In der Subquery fehlt die Einschränkung auf den 13. März 2021
+→ Es wird AVG(hospitalized_patients_intensive_care) über alle Daten gerechnet, nicht nur für den 13. März.
+
+📊 Folge:
+Bot vergleicht ICU-Werte am 13. März
+
+mit einem Durchschnitt, der evtl. ganz andere Tage enthält
+→ Logisch falscher Vergleich"
+"Welche Regionen hatten am 14. März 2021 gleichzeitig mehr neue Fälle, mehr Todesfälle und mehr ICU-Patienten als jeweils der Median?","SELECT region_name
+FROM `bigquery-public-data.covid19_italy.data_by_region`
+WHERE DATE(date) = '2021-03-14'
+  AND new_total_confirmed_cases > (
+    SELECT APPROX_QUANTILES(new_total_confirmed_cases, 2)[OFFSET(1)]
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-14'
+  )
+  AND deaths > (
+    SELECT APPROX_QUANTILES(deaths, 2)[OFFSET(1)]
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-14'
+  )
+  AND hospitalized_patients_intensive_care > (
+    SELECT APPROX_QUANTILES(hospitalized_patients_intensive_care, 2)[OFFSET(1)]
+    FROM `bigquery-public-data.covid19_italy.data_by_region`
+    WHERE DATE(date) = '2021-03-14'
+  );",Extra Hard,"SUBQUERY, LOGICAL CONNECTOR",,"Am 14. März 2021 hatten die folgenden Regionen gleichzeitig mehr neue Fälle, mehr Todesfälle und mehr ICU-Patienten als jeweils der Median:
+
+Lombardia
+Lazio
+Emilia-Romagna
+Piemonte
+Veneto
+Wenn Sie weitere Informationen oder Daten zu einem anderen Datum benötigen, lassen Sie es mich bitte wissen!","1	Piemonte
+2	Lazio
+3	Campania
+4	Puglia
+5	Sicilia
+6	Lombardia
+7	Veneto
+8	Emilia-Romagna
+9	Toscana","11,11",Nein,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
+,^,,,,,,,,,
